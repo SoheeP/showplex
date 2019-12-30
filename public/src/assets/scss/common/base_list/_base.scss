@@ -1,0 +1,16 @@
+/* 
+ * Base Scss
+ * Import base.scss into all scss files and import this file. 
+=============================+
+ Helper     : _variables.scss, _mixins.scss, _functions.scss, _placeholders.scss
+ Layout     : _grid.scss, _header.scss, _footer.scss, _sidebar.scss, _forms.scss
+ Components : _media.scss, _carousel.scss, _thumbnails.scss
+ Venders    : bootstrap.scss, jquery-ui.scss, select2.scss, sprite.scss
+=============================+
+ */
+
+//  @import '/public/src/assets/scss/common/base_list/variables';
+@import './function';
+@import './variables';
+@import './mixins';
+@import './com';
