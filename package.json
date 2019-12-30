@@ -1,0 +1,44 @@
+{
+  "name": "showplex",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "express-session": "^1.16.2",
+    "gulp-sass-glob": "^1.1.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "nodemailer": "^6.3.1",
+    "svg-captcha": "^1.4.0",
+    "util": "^0.12.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "autoprefixer": "^9.6.1",
+    "axios": "^0.19.0",
+    "del": "^5.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "nodemon": "^1.19.1",
+    "source-map-support": "^0.5.12"
+  },
+  "browserslist": [
+    "last 99 versions",
+    ">1%"
+  ]
+}
