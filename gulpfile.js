@@ -80,7 +80,7 @@ gulp.task('styles', ()=>{
   .pipe(plumber())
   .pipe(sass(setting.styles.scss_option).on('error', sass.logError))
   .pipe(autoprefixer())
-  .pipe(sourcemaps.write('./', {sourceRoot: '/public/src/..'}))
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.style.dist))
 });
 
@@ -99,9 +99,3 @@ gulp.task('default', default_process, ()=>{
   console.log(`Gulp is running!`);
   info();
 })
-
-
-// gulp.task('dev',['scripts','styles','watch'],function(){
-
-// })
-// gulp.task('prod',['scripts','styles'],()=>console.log('Tansfile complete!'))
