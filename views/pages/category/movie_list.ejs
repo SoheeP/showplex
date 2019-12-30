@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'category/movie_list', title: 'Home' }) %>
+    
+  </head>
+  <body>
+    <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+    <h1><%= title %></h1>
+    <div class="movie__slide"></div>
+    <p>Welcome to <%= title %></p>
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`, {path: 'index'}) %>
+    <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'index'}) %>
+  </body>
+</html>
