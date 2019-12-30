@@ -1,0 +1,19 @@
+@mixin makeButton ($width, $isRedBg: true){
+  width: $width;
+  height: 40px;
+  line-height: 40px;
+  font-size: $ft_medium;
+  text-align: center;
+  @if($isRedBg){
+    background-color: $pointColor_red;
+    color: #fff;
+  }
+}
+
+@mixin clearFloat {
+  &:after{
+    display: block;
+    clear: both;
+    content: '';
+  }
+}

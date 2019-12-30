@@ -1,0 +1,22 @@
+body{
+  background-color: $dark_gray;
+  color: #ffffff;
+  font-family: 'Red Hat Display', sans-serif, 'Nanum Gothic', sans-serif;
+}
+
+.margin-none{
+  margin: 0 !important;
+}
+.padding-none{
+  padding: 0 !important; 
+}
+.text-center{
+  text-align: center;
+}
+
+.hidden{
+  display: none;
+}
+.strong{
+  font-weight: bold ;
+}

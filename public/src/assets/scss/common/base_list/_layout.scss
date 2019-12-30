@@ -1,1 +1,23 @@
 //Layout style like header, footer, sidebar etc.
+
+// header
+.page__nav{
+  background-color: $pointColor_red;
+  height: 70px;
+  color: #fff;
+  @include clearFloat;
+}
+
+.page__link{
+  color:#fff;
+  transition: all .2s;
+  &:hover{
+    color: $pointColor_yellow;
+  }
+}
+.navbar-left{
+  float: left;
+}
+.navbar-right{
+  float: right;
+}
