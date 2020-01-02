@@ -4,6 +4,11 @@ body{
   font-family: 'Red Hat Display', sans-serif, 'Nanum Gothic', sans-serif;
 }
 
+.wrap{
+  width: 1440px;
+  margin: auto;
+}
+
 .margin-none{
   margin: 0 !important;
 }
@@ -19,4 +24,12 @@ body{
 }
 .strong{
   font-weight: bold ;
+}
+
+.ft-white{
+  color: #fff;
+  transition: all .2s;
+  &:hover{
+    color: $pointColor_yellow;
+  }
 }

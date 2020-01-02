@@ -2,13 +2,69 @@
 <html>
   <head>
     <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'index', title: 'Home' }) %>
-    
   </head>
   <body>
     <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
-    <h1><%= title %></h1>
-    <div class="movie__slide"></div>
-    <p>Welcome to <%= title %></p>
+    <div class="section__slide-main">
+      <div class="swiper-container-main">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="/dist/assets/images/main/slide_02.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+          </div>
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="section__slide__button_box">
+          <div class="section__slide__button-prev">
+            <i class="material-icons">
+              navigate_before
+            </i>
+          </div>
+          <div class="section__slide__button-next">
+            <i class="material-icons">
+              navigate_next
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section__slide-part">
+      <div class="wrap">
+        <h3 class="section__title strong">Top Rated Movie</h3>
+        <div class="swiper-container-part movie">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+            </div>
+          </div>
+          <!-- If we need navigation buttons -->
+          <div class="section__slide__button_box">
+            <div class="section__slide__button-prev">
+              <i class="material-icons">
+                navigate_before
+              </i>
+            </div>
+            <div class="section__slide__button-next">
+              <i class="material-icons">
+                navigate_next
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`, {path: 'index'}) %>
     <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'index'}) %>
   </body>
