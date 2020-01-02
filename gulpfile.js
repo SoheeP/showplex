@@ -8,6 +8,7 @@ const sassGlob     = require('gulp-sass-glob');
 const plumber      = require('gulp-plumber');
 const autoprefixer = require('gulp-autoprefixer');
 const del          = require('del');
+const imagemin     = require('gulp-imagemin');
 
 const assets = {
   src:`./public/src/assets`,
@@ -18,7 +19,7 @@ const assets = {
 const paths = {
   image: {
     src:`${assets.src}/images/**/*.{jpg, png, svg}`,
-    dist:`${assets.dist}/images/**/*.{jpg, png, svg}`
+    dist:`${assets.dist}/images/`
   },
   style: {
     src:`${assets.src}/scss/**/*.{scss, css}`,
@@ -84,9 +85,16 @@ gulp.task('styles', ()=>{
   .pipe(gulp.dest(paths.style.dist))
 });
 
+gulp.task('imagemin', ()=>{
+  return gulp.src(paths.image.src)
+  .pipe(imagemin())
+  .pipe(gulp.dest(paths.image.dist))
+})
+
 gulp.task('watch', ()=>{
   gulp.watch(paths.style.src, ['styles']);
   gulp.watch(paths.js.src, ['scripts'])
+  gulp.watch(paths.image.src, ['imagemin'])
 });
 
 /**
@@ -94,7 +102,7 @@ gulp.task('watch', ()=>{
  * @ gulp tasks process
  * ==================================+
  */
-const default_process = ['scripts', 'styles', 'watch'];
+const default_process = ['scripts', 'styles', 'imagemin', 'watch'];
 gulp.task('default', default_process, ()=>{
   console.log(`Gulp is running!`);
   info();
