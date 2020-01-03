@@ -1,56 +1,89 @@
 @import 'public/src/assets/scss/common/base_list/base';
 
-.section__slide-main{
+.section__slide-main {
   position: relative;
   height: 480px;
   overflow: hidden;
-  &__button_box{
+
+  .material-icons {
+      font-size: 50px;
+      color: $pointColor_yellow
+  }
+
+  &__button-prev {
     position: absolute;
     top: 50%;
-    width: 100%;
-    z-index: 50;
-    @include clearFloat;
-    .material-icons{
-      font-size: 50px;
-    }
+    left: 0;
+    cursor: pointer;
+    z-index: 999;
   }
+
+  &__button-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
+.section__slide-part {
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  &.movie {
+    margin-top: 150px;
+  }
+
+  &.musical {
+    margin-top: 100px;
+  }
+
+  // height: 406px;
+  .section__title_box {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .section__title {
+    display: inline-block;
+    font-size: $ft_title;
+    background-color: $dark_gray;
+    padding-right: 30px;
+  }
+
+  .swiper-container-part {
+    overflow: hidden;
+  }
+
+  .material-icons {
+    font-size: 36px;
+    color: $pointColor_yellow;
+  }
+
   &__button-prev {
-    float: left;
+    position: absolute;
+    top: calc(50% + 36px);
+    left: 10%;
     cursor: pointer;
   }
 
   &__button-next {
-    float: right;
+    position: absolute;
+    top: calc(50% + 36px);
+    right: 10%;
     cursor: pointer;
   }
 }
-.section__slide-part{
+
+.section__event {
   position: relative;
-  img{
-    width: 100%;
-  }
-  // height: 406px;
-  .section__title{
-    font-size: $ft_title;
-    &::after{
-      display: block;
-      width: 80px;
-      height: 1px;
-      background-color: #fff;
-      content: 1px;
-    }
-  }
-  .swiper-container-part{
-    overflow: hidden;
-  }
-  &__button_box{
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    z-index: 50;
-    @include clearFloat;
-    .material-icons{
-      font-size: 20px;
-      color: $pointColor_yellow
-    }
+  width: 100%;
+  height: 300px;
+  margin: 80px 0 100px;
+  border: 1px solid red;
+  box-sizing: border-box;
 }
