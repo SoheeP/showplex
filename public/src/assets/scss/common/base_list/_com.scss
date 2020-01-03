@@ -33,3 +33,17 @@ body{
     color: $pointColor_yellow;
   }
 }
+.line{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  z-index: -1
+}
+
+.link-block{
+  display: block;
+}
