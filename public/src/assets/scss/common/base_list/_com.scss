@@ -5,6 +5,18 @@ body{
 }
 
 .wrap{
+  @include respond-to('small'){
+    width: 420px;
+  };
+  @include respond-to('medium'){
+    width: 680px;
+  };
+  @include respond-to('large'){
+    width: 860px;
+  };
+  @include respond-to('extraL'){
+    width: 960px;
+  };
   width: 1440px;
   margin: auto;
 }

@@ -29,4 +29,20 @@
     border-radius: 50%;
     background-color: red;
   }
+  &__view{
+    background-color: $light_dark_gray;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 5px 0;
+  }
+}
+.nav__pagination{
+  &__link{
+    @include pagenation_button(18px);
+  }
+  &__button{
+    @include pagenation_button(18px);
+    
+  }
 }

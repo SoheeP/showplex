@@ -10,16 +10,16 @@
 
   <div class="section__detail">
 
-      <div class="row wrap">
-        <div class="col-6 padding-none margin-none">
-          <img src="/dist/assets/images/main/movie/poster_01.jpg" alt="poster" class="section__detail__poster">
-        </div>
-        <div class="col-6 padding-none margin-none">
-          <h2 class="section__detail__title strong">Frozen 2</h2>
-          <p class="section__detail__subtitle"><span class="year">2019</span>, <span class="time">200m</span>, <span
-              class="age">All</span><span class="point">★★★★☆</span></p>
-        </div>
+    <div class="row wrap">
+      <div class="col-6 padding-none margin-none">
+        <img src="/dist/assets/images/main/movie/poster_01.jpg" alt="poster" class="section__detail__poster">
       </div>
+      <div class="col-6 padding-none margin-none">
+        <h2 class="section__detail__title strong">Frozen 2</h2>
+        <p class="section__detail__subtitle"><span class="year">2019</span>, <span class="time">200m</span>, <span
+            class="age">All</span><span class="point">★★★★☆</span></p>
+      </div>
+    </div>
 
   </div>
   <div class="section__comment">
@@ -27,8 +27,8 @@
       <h2 class="section__comment__title strong">Comments</h2>
       <div class="section__comment__view">
         <div class="media">
-          <img src="..." class="align-self-center mr-3 section__comment__img" alt="...">
-          <p class="align-self-center section__comment__username mr-3 strong">User Name</p>
+          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
+          <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
           <div class="media-body">
 
             <h5 class="mt-0">Center-aligned media</h5>
@@ -38,16 +38,71 @@
             <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
               penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
           </div>
-          <p class="align-self-center section__comment__date ml-3">2020-01-01</p>
+          <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
         </div>
       </div>
-    </div>
-    <div class="section__slider-mini">
+      <div class="section__comment__view">
+        <div class="media">
+          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
+          <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
+          <div class="media-body">
+
+            <h5 class="mt-0">Center-aligned media</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+              odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+              fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          </div>
+          <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
+        </div>
+      </div>
+      <div class="section__comment__view">
+        <div class="media">
+          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
+          <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
+          <div class="media-body">
+
+            <h5 class="mt-0">Center-aligned media</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+              odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+              fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          </div>
+          <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
+        </div>
+      </div>
 
     </div>
+    <nav aria-label="Page navigation nav__pagination">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="nav__pagination__button strong" href="#" aria-label="Previous">
+            <span aria-hidden="true">
+              <i class="material-icons">navigate_before</i>
+            </span>
+          </a>
+        </li>
+        <li class="page-item"><a class="nav__pagination__link strong active" href="#">1</a></li>
+        <li class="page-item"><a class="nav__pagination__link strong" href="#">2</a></li>
+        <li class="page-item"><a class="nav__pagination__link strong" href="#">3</a></li>
+        <li class="page-item">
+          <a class="nav__pagination__button" href="#" aria-label="Next">
+            <span aria-hidden="true">
+              <i class="material-icons">navigate_next</i>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="section__slider-mini">
 
-    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`, {path: 'pages/category/movie_detail'}) %>
-    <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
+  </div>
+
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`, {path: 'pages/category/movie_detail'}) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
 </body>
 
 </html>
