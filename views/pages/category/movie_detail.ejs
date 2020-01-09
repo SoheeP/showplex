@@ -18,6 +18,9 @@
         <h2 class="section__detail__title strong">Frozen 2</h2>
         <p class="section__detail__subtitle"><span class="year">2019</span>, <span class="time">200m</span>, <span
             class="age">All</span><span class="point">★★★★☆</span></p>
+        <p class="section__detail__descript">
+          Magna ex tempor non elit duis enim. Exercitation minim ex esse culpa amet velit occaecat tempor Lorem nostrud do proident. Anim ipsum velit anim deserunt in eu eiusmod nulla eu. Fugiat est cupidatat et eiusmod non commodo dolore sit deserunt elit. Est incididunt consectetur irure voluptate velit nisi do. Ullamco reprehenderit mollit commodo dolore dolore deserunt. Eiusmod non laboris nisi mollit est elit officia pariatur ut officia.
+        </p>
       </div>
     </div>
 
@@ -25,6 +28,7 @@
   <div class="section__comment">
     <div class="wrap">
       <h2 class="section__comment__title strong">Comments</h2>
+      <% for (var i = 0; i < 3 ; i++ ){ %>
       <div class="section__comment__view">
         <div class="media">
           <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
@@ -41,42 +45,13 @@
           <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
         </div>
       </div>
-      <div class="section__comment__view">
-        <div class="media">
-          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
-          <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
-          <div class="media-body">
-
-            <h5 class="mt-0">Center-aligned media</h5>
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-              odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-              fringilla. Donec lacinia congue felis in faucibus.</p>
-            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-          </div>
-          <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
-        </div>
+      <% } %>
+      <div class="d-flex justify-content-end section__comment__button_box">
+        <button type="button" class="btn section__comment__button">Write Comment</button>
       </div>
-      <div class="section__comment__view">
-        <div class="media">
-          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
-          <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
-          <div class="media-body">
-
-            <h5 class="mt-0">Center-aligned media</h5>
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
-              odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-              fringilla. Donec lacinia congue felis in faucibus.</p>
-            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-          </div>
-          <p class="align-self-top section__comment__date ml-3">2020-01-01</p>
-        </div>
-      </div>
-
     </div>
     <nav aria-label="Page navigation nav__pagination">
-      <ul class="pagination">
+      <ul class="pagination justify-content-center">
         <li class="page-item">
           <a class="nav__pagination__button strong" href="#" aria-label="Previous">
             <span aria-hidden="true">
@@ -97,12 +72,42 @@
       </ul>
     </nav>
   </div>
-  <div class="section__slider-mini">
-
+  <div class="section__slide-mini">
+    <div class="wrap">      <div class="section__title_box">
+        <span class="line"></span>
+        <h3 class="section__title strong">Other Movie</h3>
+      </div>
+      <div class="swiper-container-mini">
+        <div class="swiper-wrapper">
+          <% for (var i = 0; i < 11; i++) { %>
+          <div class="swiper-slide">
+            <a href="/movie/detail" class="link-blcok">
+              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="/movie/detail" class="link-blcok">
+              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
+            </a>
+          </div>
+          <% } %>
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="section__slide-mini__button-prev">
+          <i class="material-icons">
+            navigate_before
+          </i>
+        </div>
+        <div class="section__slide-mini__button-next">
+          <i class="material-icons">
+            navigate_next
+          </i>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`, {path: 'pages/category/movie_detail'}) %>
-  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+    <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
 </body>
 
 </html>
