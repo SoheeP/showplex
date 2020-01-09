@@ -1,5 +1,7 @@
 $pointColor_red: #8C1127;
+$pointColor_red_dark: #780C1F;
 $pointColor_yellow: #D9AB73;
+$pointColor_yellow_dark: #C79961;
 $light_gray: #C4C4C4;
 $light_dark_gray: #828282;
 $dark_gray: #333333;
@@ -17,4 +19,5 @@ $breakpoints: (
   'medium': 720px,
   'large':  960px,
   'extraL': 1140px,
+  'extraLL': 1920px
 ) !default;

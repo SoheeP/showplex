@@ -1,11 +1,27 @@
-@mixin makeButton ($width, $isRedBg: true){
-  width: $width;
-  height: 40px;
-  line-height: 40px;
+@mixin makeButton ($bgColor: 'red'){
+  padding: 7px 20px;
   font-size: $ft_medium;
+  font-weight: bold;
   text-align: center;
-  @if($isRedBg){
-    background-color: $pointColor_red;
+  @if($bgColor) == 'yellow'{
+    background-color: $pointColor_yellow;
+    color: #fff;
+    &:hover, &:focus{
+      background-color: $pointColor_yellow_dark;
+      color: #fff;
+    }
+  } @else if($bgColor) == 'gray'{
+    background-color: $light_gray;
+    color: #000;
+    &:hover, &:focus{
+      background-color: $light_dark_gray;
+      color: #000;
+    }  
+  }
+  background-color: $pointColor_red;
+  color: #fff;
+  &:hover, &:focus{
+    background-color: $pointColor_red_dark;
     color: #fff;
   }
 }
@@ -47,10 +63,17 @@
     }
   }
   &.disabled{
-    
+    color: $pointColor_yellow_dark
   }
   &:hover{
     color: $pointColor_yellow;
     text-decoration: none;
   }
+}
+
+@mixin pageBigTitle{
+  font-size: $ft_pgTitle;
+  font-weight: bold;
+  margin: 150px 0 50px;
+  text-align: center;
 }
