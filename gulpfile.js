@@ -18,7 +18,7 @@ const assets = {
 
 const paths = {
   image: {
-    src:`${assets.src}/images/**/*.{jpg, png, svg}`,
+    src:`${assets.src}/images/**/*`,
     dist:`${assets.dist}/images/`
   },
   style: {
