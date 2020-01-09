@@ -1,0 +1,11 @@
+@import 'public/src/assets/scss/common/base_list/base';
+
+.signup__title{
+  @include pageBigTitle;
+}
+.signup__button-join{
+  @include makeButton
+}
+.signup__button-cancel{
+  @include makeButton('gray')
+}
