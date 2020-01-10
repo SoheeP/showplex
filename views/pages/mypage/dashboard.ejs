@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/mypage/dashboard', title: 'My page'})%>
+</head>
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <div class="container-fruid">
+    <div class="wrap">
+      <h1 class="mypage__title">Sign in</h1>
+      <div class="mypage__chart">
+        <h3 class="mypage__subtitle strong">You were logged:</h3>
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+      <div class="mypage__board">
+        <h3 class="mypage__subtitle strong">Recented Free Board:</h3>
+      </div>
+    </div>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/mypage/dashboard'}) %>
+</body>
+</html>

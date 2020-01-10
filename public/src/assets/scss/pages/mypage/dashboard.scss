@@ -1,0 +1,10 @@
+@import 'public/src/assets/scss/common/base_list/base';
+
+.mypage__title{
+  @include pageBigTitle;
+}
+
+.mypage__subtitle{
+  font-size: $ft_large;
+  line-height: 1.3;
+}
