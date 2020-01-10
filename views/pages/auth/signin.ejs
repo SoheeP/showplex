@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/auth/signin', title: 'Sign in' })%>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <div class="container-fluid">
+    <h1 class="signin__title">Sign in</h1>
+    <form class="signin__form">
+      <div class="form-row justify-content-center">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="email" class="signin__form__label strong">Your Email</label>
+            <input type="email" class="form-control signin__form__input" id="email" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="password" class="signin__form__label strong">Password</label>
+            <a href="">
+              <small id="passwordHelp" class="form-text signin__form__help">Forgot your password?</small>
+            </a>
+            <input type="password" class="form-control signin__form__input" id="password">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center signin__button_box">
+        <button type="submit" class="btn signin__button-login ">Sign up</button>
+        <a href="/" class="btn signin__button-cancel ">Home</a>
+      </div>
+  
+      <div class="d-flex justify-content-center">
+          <a href="/auth/signup" class="btn signin__button-join ">I want join here!</a>
+        </div>
+    </form>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/auth/signin'})%>
+</body>
+
+</html>
