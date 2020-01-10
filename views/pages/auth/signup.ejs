@@ -7,41 +7,61 @@
 
 <body>
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
-  <h1 class="signup__title">Sign up</h1>
-  <form>
-    <div class="form-row justify-content-center">
-      <div class="col-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <div class="form-row">
-          <div class="col-7">
-            <input type="text" class="form-control" placeholder="City">
+  <div class="container-fluid">
+    <h1 class="signup__title">Sign up</h1>
+    <form class="signup__form">
+      <div class="form-row justify-content-center">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="email" class="signup__form__label strong">Your Email</label>
+            <input type="email" class="form-control signup__form__input" id="email" aria-describedby="emailHelp">
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="State">
+          <div class="form-group">
+            <label for="verifiedNumver" class="signup__form__label strong">Verified Number</label>
+            <input type="text" class="form-control signup__form__input" id="verifiedNumver" aria-describedby="verifiedNumver">
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Zip">
+          <div class="form-group">
+            <label for="password" class="signup__form__label strong">Password</label>
+            <input type="password" class="form-control signup__form__input" id="password">
+          </div>
+          <div class="form-group">
+            <label for="checkPassword" class="signup__form__label strong">Confirm Password</label>
+            <input type="password" class="form-control signup__form__input" id="checkPassword">
+          </div>
+          <div class="form-group">
+            <label for="verifiedNumver" class="signup__form__label strong">Name</label>
+            <input type="text" class="form-control signup__form__input" id="username" aria-describedby="username">
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber" class="signup__form__label strong">Phone Number</label>
+            <input type="text" class="form-control signup__form__input" id="phoneNumber" aria-describedby="phoneNumber">
+          </div>
+          <div class="form-group">
+            <label for="captha" class="signup__form__label strong">Captha Number</label>
+            <div class="form-row">
+              <div class="col-3">
+                <input type="text" class="form-control signup__form__input " placeholder="854723" disabled>
+              </div>
+              <div class="col">
+                <button class="btn signup__button-refresh">
+                  <div class="material-icons">
+                    refresh
+                  </div>
+                </button>
+              </div>
+              <div class="col-6 justify-cotent-end">
+                <input type="text" class="form-control signup__form__input" id="captha" placeholder="Number">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <btton type="submit" class="btn signup__button-join ">Sign up</btton>
-      <btton type="submit" class="btn signup__button-cancel ">Cancel</btton>
-    </div>
-  </form>
+      <div class="d-flex justify-content-center signup__button_box">
+        <button type="submit" class="btn signup__button-join ">Sign up</button>
+        <a href="/" class="btn signup__button-cancel ">Cancel</a>
+      </div>
+    </form>
+  </div>
   <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/auth/signup'}) %>
 </body>
