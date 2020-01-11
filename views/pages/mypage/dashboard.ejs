@@ -6,14 +6,68 @@
 <body>
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fruid">
-    <div class="wrap">
-      <h1 class="mypage__title">Sign in</h1>
-      <div class="mypage__chart">
-        <h3 class="mypage__subtitle strong">You were logged:</h3>
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>
-      <div class="mypage__board">
-        <h3 class="mypage__subtitle strong">Recented Free Board:</h3>
+    <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
+    <h1 class="mypage__title">Sign in</h1>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="mypage__login">
+          <h3 class="mypage__subtitle strong">You were logged:</h3>
+          <table class="table table-striped table-dark mypage__table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Date</th>
+                <th scope="col" class="text-center">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-center">1</th>
+                <td class="text-center">2020-01-01</td class="text-center">
+                <td class="text-center">01:03</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-center">2</th>
+                <td class="text-center">2020-01-01</td>
+                <td class="text-center">11:11</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-center">3</th>
+                <td class="text-center">2020-01-03</td>
+                <td class="text-center">23:11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mypage__board">
+          <h3 class="mypage__subtitle strong">Recented Free Board:</h3>
+          <table class="table table-striped table-dark mypage__table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Title</th>
+                <th scope="col" class="text-center">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-center">1</th>
+                <td>Frozen 2</td>
+                <td class="text-center">2020-01-11</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-center">2</th>
+                <td>kingdom of seoul</td>
+                <td class="text-center">2020-01-11</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-center">3</th>
+                <td>Cats</td>
+                <td class="text-center">2020-01-31</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
