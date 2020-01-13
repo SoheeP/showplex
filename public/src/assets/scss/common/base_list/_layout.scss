@@ -17,10 +17,11 @@
   background-color: #400A14;
   border-right: 10px solid $pointColor_red;
   width: 15%;
-  height: 100vh;
+  height: calc(100% + 170px);
   padding: 0 20px;
   &__title{
     margin-top: 145px;
+    padding-bottom: 15px;
     font-size: $ft_large;
   }
   .link-block{
@@ -30,22 +31,34 @@
     color: $pointColor_yellow;
   }
   &__item{
-    margin: 15px 0;
+    padding: 15px 0;
     font-size: $ft_large;
+  }
+  &__button{
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    background-color: $pointColor_red;
+    padding: .75rem .375rem;
+    .material-icons{
+      color: #fff;
+    }
   }
 }
 
 //footer
 .footer{
+  position: relative;
   background-color: $pointColor_red;
   height: 150px;
   margin-top: 120px;
-}
-
-.footer__list{
-  padding: 50px 0 30px;
-  &__item{
-    font-size: $ft_medium;
-    padding-right: 45px;
+  z-index: 100;
+  &__list{
+    padding: 50px 0 30px;
+    &__item{
+      font-size: $ft_medium;
+      padding-right: 45px;
+    }
   }
 }
+
