@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/mypage/change_profile', title: 'Change Info' }) %>
+</head>
+
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
+  <div class="container-fluid">
+    <h1 class="profile__title">Change Info</h1>
+    <form class="profile__form">
+      <div class="form-row justify-content-center">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="email" class="profile__form__label strong">Your Email</label>
+            <input type="email" class="form-control profile__form__input" id="email" aria-describedby="emailHelp" disabled placeholder="gg">
+          </div>
+          <div class="form-group">
+            <label for="password" class="profile__form__label strong">Password</label>
+            <input type="password" class="form-control profile__form__input" id="password">
+          </div>
+          <div class="form-group">
+            <label for="checkPassword" class="profile__form__label strong">Confirm Password</label>
+            <input type="password" class="form-control profile__form__input" id="checkPassword">
+          </div>
+          <div class="form-group">
+            <label for="verifiedNumver" class="profile__form__label strong">Name</label>
+            <input type="text" class="form-control profile__form__input" id="username" aria-describedby="username">
+          </div>
+          <div class="form-group">
+            <label for="phoneNumber" class="profile__form__label strong">Phone Number</label>
+            <input type="text" class="form-control profile__form__input" id="phoneNumber" aria-describedby="phoneNumber">
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center profile__button_box">
+        <button type="submit" class="btn profile__button-join ">Change</button>
+        <a href="/" class="btn profile__button-cancel ">Cancel</a>
+      </div>
+    </form>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/mypage/change_profile'}) %>
+</body>
+
+</html>
