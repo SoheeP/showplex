@@ -45,21 +45,13 @@
         </div>
         <div class="swiper-container-part rated">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
+            <% ratedMovieData.map(list => { %>
+              <div class="swiper-slide">
+                <a href="/movie/detail/<%= list.id %>" class="link-blcok">
+                  <img src="https://yts.tl<%= list.medium_cover_image %>" alt="<%= list.title%>">                 
+                </a>
+              </div>
+            <% }) %>
           </div>
           <!-- If we need navigation buttons -->
             <div class="section__slide-part__button-prev">
@@ -79,25 +71,17 @@
       <div class="wrap">
         <div class="section__title_box">
           <span class="line"></span>
-          <h3 class="section__title strong">Top Rated Movie</h3>
+          <h3 class="section__title strong">Top Recommend Movie</h3>
         </div>
         <div class="swiper-container-part recommend">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
+            <% recommendMovieData.map(list => { %>
+              <div class="swiper-slide">
+                <a href="/movie/detail" class="link-blcok">
+                  <img src="https://yts.tl<%= list.medium_cover_image %>" alt="<%= list.title%>">                 
+                </a>
+              </div>
+            <% }) %>
           </div>
           <!-- If we need navigation buttons -->
             <div class="section__slide-part__button-prev">
