@@ -45,21 +45,13 @@
         </div>
         <div class="swiper-container-part rated">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
+            <% perforList.map(list => { %>
+              <div class="swiper-slide">
+                <a href="/play/detail/<%= list.seq._text %>" class="link-block">
+                  <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text%>">
+                </a>
+              </div>
+            <% }) %>
           </div>
           <!-- If we need navigation buttons -->
             <div class="section__slide-part__button-prev">
