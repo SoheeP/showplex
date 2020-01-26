@@ -32,7 +32,7 @@
       <% for (var i = 0; i < 3 ; i++ ){ %>
       <div class="section__comment__view">
         <div class="media">
-          <img src="..." class="align-self-top mr-3 section__comment__img" alt="...">
+          <img src="" class="align-self-top mr-3 section__comment__img" alt="">
           <p class="align-self-top section__comment__username mr-3 strong">User Name</p>
           <div class="media-body">
 
@@ -74,7 +74,8 @@
     </nav>
   </div>
   <div class="section__slide-mini">
-    <div class="wrap">      <div class="section__title_box">
+    <div class="wrap">      
+      <div class="section__title_box">
         <span class="line"></span>
         <h3 class="section__title strong">Other Movie</h3>
       </div>
@@ -83,12 +84,14 @@
           <% for (var i = 0; i < 11; i++) { %>
           <div class="swiper-slide">
             <a href="/movie/detail" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+              <!-- <img src="/dist/assets/images/main/slide_01.jpg" alt=""> -->
+              <%= randomSort.title %>
             </a>
           </div>
           <div class="swiper-slide">
             <a href="/movie/detail" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
+              <!-- <img src="/dist/assets/images/main/slide_02.jpg" alt=""> -->
+              <%= randomSort.title %>
             </a>
           </div>
           <% } %>
