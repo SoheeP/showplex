@@ -1,3 +1,10 @@
+
+// rating
+let rating = document.querySelector('.point').getAttribute('data-rating');
+
+console.log(rating);
+
+// other slider
 var mySwiper = new Swiper('.swiper-container-mini', {
   // Optional parameters
   direction: 'horizontal',

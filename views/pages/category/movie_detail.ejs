@@ -12,13 +12,14 @@
 
     <div class="row wrap">
       <div class="col-6 padding-none margin-none">
-        <img src="/dist/assets/images/main/movie/poster_01.jpg" alt="poster" class="section__detail__poster">
+        <img src="https://yts.tl/<%= movieInfo.large_cover_image %>" alt="poster" class="section__detail__poster">
       </div>
       <div class="col-6 padding-none margin-none">
         <h2 class="section__detail__title strong"><%= movieInfo.title %></h2>
-        <p class="section__detail__subtitle"><span class="year"><%= movieInfo.year %></span>, <span class="time">200m</span>, <span
-            class="age">All</span><span class="point">★★★★☆</span></p>
-            <p> </p>
+        <p class="section__detail__subtitle"><span class="year"><%= movieInfo.year %></span>, <span class="time"><%= movieInfo.runtime %>m</span>, <span class="age">All</span><span class="point" data-rating="<%= movieInfo.rating %>">
+          ☆☆☆☆☆
+          </span></p>
+        <p> </p>
         <p class="section__detail__descript">
           <%= movieInfo.description_full %>
         </p>
@@ -74,27 +75,20 @@
     </nav>
   </div>
   <div class="section__slide-mini">
-    <div class="wrap">      
+    <div class="wrap">
       <div class="section__title_box">
         <span class="line"></span>
         <h3 class="section__title strong">Other Movie</h3>
       </div>
       <div class="swiper-container-mini">
         <div class="swiper-wrapper">
-          <% for (var i = 0; i < 11; i++) { %>
+          <% randomSort.map( list =>{ %>
           <div class="swiper-slide">
-            <a href="/movie/detail" class="link-blcok">
-              <!-- <img src="/dist/assets/images/main/slide_01.jpg" alt=""> -->
-              <%= randomSort.title %>
+            <a href="/movie/detail/<%= list.id %>" class="link-blcok">
+              <img src="https://yts.tl/<%= list.medium_cover_image %>" alt="<%= list.title %>">
             </a>
           </div>
-          <div class="swiper-slide">
-            <a href="/movie/detail" class="link-blcok">
-              <!-- <img src="/dist/assets/images/main/slide_02.jpg" alt=""> -->
-              <%= randomSort.title %>
-            </a>
-          </div>
-          <% } %>
+          <% }) %>
         </div>
         <!-- If we need navigation buttons -->
         <div class="section__slide-mini__button-prev">
@@ -110,8 +104,8 @@
       </div>
     </div>
   </div>
-    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
-    <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/category/movie_detail'}) %>
 </body>
 
 </html>
