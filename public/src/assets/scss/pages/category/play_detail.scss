@@ -18,10 +18,36 @@
     max-width: 340px;
     margin: auto;
   }
-  &__descript{
+  &__info{
     margin-top: 13px;
     font-size: $ft_small;
     line-height: 1.3;
+  }
+  &__map{
+    width: 100%;
+    height: 450px;
+  }
+  .book{
+    color: #fff;
+    padding: 10px 0;
+    transition: all .2s;
+    line-height: 1.3;
+    &:hover{
+      color: $pointColor_yellow;
+      text-decoration: underline;
+    }
+  }
+  .point{
+    position: relative;
+  }
+  .point:after{
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 20px;
+    background-color: $pointColor_yellow;
+    content: '';
   }
 }
 

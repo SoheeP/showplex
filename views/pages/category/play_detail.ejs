@@ -9,18 +9,22 @@
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
 
   <div class="section__detail">
-
     <div class="row wrap">
       <div class="col-6 padding-none margin-none">
-        <img src="/dist/assets/images/main/movie/poster_01.jpg" alt="poster" class="section__detail__poster">
+        <img src="<%= perforDetail.imgUrl._text %>" alt="poster" class="section__detail__poster">
       </div>
       <div class="col-6 padding-none margin-none">
-        <h2 class="section__detail__title strong"></h2>
-        <p class="section__detail__subtitle"><span class="year">2019</span>, <span class="time">200m</span>, <span
-            class="age">All</span><span class="point">★★★★☆</span></p>
-        <p class="section__detail__descript">
-          Magna ex tempor non elit duis enim. Exercitation minim ex esse culpa amet velit occaecat tempor Lorem nostrud do proident. Anim ipsum velit anim deserunt in eu eiusmod nulla eu. Fugiat est cupidatat et eiusmod non commodo dolore sit deserunt elit. Est incididunt consectetur irure voluptate velit nisi do. Ullamco reprehenderit mollit commodo dolore dolore deserunt. Eiusmod non laboris nisi mollit est elit officia pariatur ut officia.
-        </p>
+        <h2 class="section__detail__title strong">
+          <%= perforDetail.title._text %>
+        </h2>
+        <div class="section__detail__subtitle">
+          <span class="date"><%= perforDetail.startDate._text %> ~ <%= perforDetail.endDate._text %></span> 
+          <p class="section__detail__info">
+            <span class="area"><%= perforDetail.area._text%></span>, 
+            <span class="place"><%= perforDetail.place._text %></span>
+          </p>
+          <a href="<%=perforDetail.url._text %>" class="link-block book">예매하러 가기</a>
+        </div>
       </div>
     </div>
 
