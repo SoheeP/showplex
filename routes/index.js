@@ -1,9 +1,7 @@
-var express = require('express');
-var axios = require('axios');
-var { AxiosConfig } = require('./common');
-var router = express.Router();
-var convert = require('xml-js');
-var request = require('request');
+const express = require('express');
+const { AxiosConfig, convertTimeToKorean } = require('./common');
+const { axios, xml_js, moment } = require('./npm_modules');
+const router = express.Router();
 
 /* GET Index home page. */
 router.get('/', function(req, res, next) {
@@ -60,7 +58,6 @@ router.get('/movie/detail/:id', async function(req, res, next){
   .catch(function(err){
     console.log('err:', err);
   });
-  // console.log(body, 'out body');
   res.render('pages/category/movie_detail', body);
 })
 
@@ -74,7 +71,7 @@ router.get('/play/list', async function(req, res, next){
   await axios.get(`${HOST}?requestTime=20200101&realmCode=A000&cPage=1&rows=10&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=1&${encodeURIComponent('serviceKey')}=${KEY}`
   )
   .then(function(res){
-    let convertJson = convert.xml2json(res.data, {compact: true, spaces: 2})
+    let convertJson = xml_js.xml2json(res.data, {compact: true, spaces: 2})
     let resObj = JSON.parse(convertJson);
     body.perforList = resObj.response.msgBody.perforList;
     body.title = 'play_list';
@@ -89,10 +86,6 @@ router.get('/play/detail/:seq', async function(req, res, next){
   let body = {};
   let play_id = req.params.seq; 
   let HOST = `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/`;
-  console.log(`####################Params\n
-  ${play_id}\n
-
-  ####################################`);
 
   let KEY = `MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`;
 
@@ -100,18 +93,24 @@ router.get('/play/detail/:seq', async function(req, res, next){
   )
   .then(function(res){
 
-      let convertJson = convert.xml2json(res.data, {
+      let convertJson = xml_js.xml2json(res.data, {
         compact: true,
         spaces: 2
       });
       let resObj = JSON.parse(convertJson);
       body.perforDetail = resObj.response.msgBody.perforInfo;
+      let startDate = convertTimeToKorean(body.perforDetail.startDate._text);
+      let endDate = convertTimeToKorean(body.perforDetail.endDate._text);
+      body.perforDetail.startDate._text = startDate;
+      body.perforDetail.endDate._text = endDate
       body.title = 'play_detail';
+    })
+    .catch(function(err){
+      console.log('err:', err);
+    });
     
-  })
-  .catch(function(err){
-    console.log('err:', err);
-  });
+    console.log(body.perforDetail)
+  let MAP_KEY = '28910ae55949a264707e358c470e76a5';
   res.render('pages/category/play_detail', body);
 });
 
