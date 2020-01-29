@@ -37,17 +37,17 @@
       text-decoration: underline;
     }
   }
-  .point{
-    position: relative;
-  }
-  .point:after{
-    position: absolute;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 20px;
-    background-color: $pointColor_yellow;
-    content: '';
+  &__point{
+    &-empty{
+      position: relative;
+    }
+    &-color{
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+
+    }
   }
 }
 

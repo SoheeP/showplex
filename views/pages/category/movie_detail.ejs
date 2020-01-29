@@ -16,9 +16,15 @@
       </div>
       <div class="col-6 padding-none margin-none">
         <h2 class="section__detail__title strong"><%= movieInfo.title %></h2>
-        <p class="section__detail__subtitle"><span class="year"><%= movieInfo.year %></span>, <span class="time"><%= movieInfo.runtime %>m</span>, <span class="age">All</span><span class="point" data-rating="<%= movieInfo.rating %>">
-          ☆☆☆☆☆
-          </span></p>
+        <p class="section__detail__subtitle"><span class="year"><%= movieInfo.year %></span>, <span class="time"><%= movieInfo.runtime %>m</span>, <span class="age">All</span>
+          <span class="section__detail__point">
+            <span class="section__detail__point-empty">☆☆☆☆☆
+              <span class="section__detail__point-color" data-rating="<%= (movieInfo.rating/2)*20 %>">
+                ★★★★★
+              </span>
+            </span>
+          </span>
+        </p>
         <p> </p>
         <p class="section__detail__descript">
           <%= movieInfo.description_full %>

@@ -1,8 +1,6 @@
 
 // rating
-let rating = document.querySelector('.point').getAttribute('data-rating');
-
-console.log(rating);
+document.querySelector('[data-rating]').style.width = `${document.querySelector('[data-rating]').getAttribute('data-rating')}%`;
 
 // other slider
 var mySwiper = new Swiper('.swiper-container-mini', {

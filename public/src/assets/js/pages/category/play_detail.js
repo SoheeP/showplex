@@ -1,3 +1,7 @@
+//rating star
+document.querySelector('[data-rating]').style.width = `${document.querySelector('[data-rating]').getAttribute('data-rating')}%`;
+
+// other slide
 var mySwiper = new Swiper('.swiper-container-mini', {
   // Optional parameters
   direction: 'horizontal',
@@ -31,4 +35,4 @@ var mySwiper = new Swiper('.swiper-container-mini', {
       spaceBetween: 25
     }
   }
-})
+});
