@@ -27,16 +27,16 @@
         </div>
       </div>
       <!-- If we need navigation buttons -->
-        <div class="section__slide-main__button-prev">
-          <i class="material-icons">
-            navigate_before
-          </i>
-        </div>
-        <div class="section__slide-main__button-next">
-          <i class="material-icons">
-            navigate_next
-          </i>
-        </div>
+      <div class="section__slide-main__button-prev">
+        <i class="material-icons">
+          navigate_before
+        </i>
+      </div>
+      <div class="section__slide-main__button-next">
+        <i class="material-icons">
+          navigate_next
+        </i>
+      </div>
     </div>
   </div>
   <div class="section__slide-part movie">
@@ -47,33 +47,25 @@
       </div>
       <div class="swiper-container-part movie">
         <div class="swiper-wrapper">
+          <% ratedMovieData.map(list => { %>
           <div class="swiper-slide">
-            <a href="/movie/detail" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+            <a href="/movie/detail/<%= list.id %>" class="link-blcok">
+              <img src="https://yts.tl<%= list.medium_cover_image %>" alt="<%= list.title%>">
             </a>
           </div>
-          <div class="swiper-slide">
-            <a href="/movie/detail" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="/movie/detail" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-            </a>
-          </div>
+          <% }) %>
         </div>
         <!-- If we need navigation buttons -->
-          <div class="section__slide-part__button-prev">
-            <i class="material-icons">
-              navigate_before
-            </i>
-          </div>
-          <div class="section__slide-part__button-next">
-            <i class="material-icons">
-              navigate_next
-            </i>
-          </div>
+        <div class="section__slide-part__button-prev">
+          <i class="material-icons">
+            navigate_before
+          </i>
+        </div>
+        <div class="section__slide-part__button-next">
+          <i class="material-icons">
+            navigate_next
+          </i>
+        </div>
       </div>
     </div>
   </div>
@@ -94,32 +86,24 @@
       </div>
       <div class="swiper-container-part play">
         <div class="swiper-wrapper">
+          <% perforList.map(list => { %>
           <div class="swiper-slide">
-            <a href="/play/detail" class="link-block">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
+            <a href="/play/detail/<%= list.seq._text %>" class="link-block">
+              <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text%>">
             </a>
           </div>
-          <div class="swiper-slide">
-            <a href="/play/detail" class="link-block">
-              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="/play/detail" class="link-block">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-            </a>
-          </div>
+          <% }) %>
         </div>
         <!-- If we need navigation buttons -->
-          <div class="section__slide-part__button-prev">
-            <i class="material-icons">
-              navigate_before
-            </i>
-          </div>
-          <div class="section__slide-part__button-next">
-            <i class="material-icons">
-              navigate_next
-            </i>
+        <div class="section__slide-part__button-prev">
+          <i class="material-icons">
+            navigate_before
+          </i>
+        </div>
+        <div class="section__slide-part__button-next">
+          <i class="material-icons">
+            navigate_next
+          </i>
         </div>
       </div>
     </div>
@@ -132,33 +116,25 @@
       </div>
       <div class="swiper-container-part musical">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-            </a>
-          </div>
+          <% musicalList.map(list => { %>
+            <div class="swiper-slide">
+              <a href="/musical/detail/<%= list.seq._text %>" class="link-block">
+                <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text%>">
+              </a>
+            </div>
+            <% }) %>
         </div>
         <!-- If we need navigation buttons -->
-          <div class="section__slide-part__button-prev">
-            <i class="material-icons">
-              navigate_before
-            </i>
-          </div>
-          <div class="section__slide-part__button-next">
-            <i class="material-icons">
-              navigate_next
-            </i>
-          </div>
+        <div class="section__slide-part__button-prev">
+          <i class="material-icons">
+            navigate_before
+          </i>
+        </div>
+        <div class="section__slide-part__button-next">
+          <i class="material-icons">
+            navigate_next
+          </i>
+        </div>
       </div>
     </div>
   </div>

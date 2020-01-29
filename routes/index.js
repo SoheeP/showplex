@@ -4,8 +4,40 @@ const { axios, xml_js, moment } = require('./npm_modules');
 const router = express.Router();
 
 /* GET Index home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'index' });
+router.get('/', async function(req, res, next) {
+  let body = {};
+  let apiUrl = `https://yts.tl/api/v2`;
+  let ratedMovieConfig = {
+    method: 'get',
+    url: `${apiUrl}/list_movies.json&limit=15`
+  };
+  let ratedPlayConfig = {
+    method: 'get',
+    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/realm?requestTime=20200101&realmCode=A000&cPage=1&rows=10&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=1&${encodeURIComponent('serviceKey')}=MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`,
+  }
+  let ratedMusicalConfig = {
+    method: 'get',
+    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/realm?requestTime=20200101&realmCode=B000&cPage=1&rows=10&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=1&${encodeURIComponent('serviceKey')}=MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`,
+  }
+
+  await axios.all([
+    AxiosConfig(ratedMovieConfig),
+    AxiosConfig(ratedPlayConfig),
+    AxiosConfig(ratedMusicalConfig)
+  ])
+  .then(axios.spread(function(movie, play, musical){
+    let convertJsonPlay = xml_js.xml2json(play.data, {compact: true, spaces: 2})
+    let resObjPlay = JSON.parse(convertJsonPlay);
+    let convertJsonMusical = xml_js.xml2json(musical.data, {compact: true, spaces: 2})
+    let resObjMusical = JSON.parse(convertJsonMusical);
+
+    body.ratedMovieData = movie.data.data.movies;
+    body.perforList = resObjPlay.response.msgBody.perforList;
+    body.musicalList = resObjMusical.response.msgBody.perforList;
+    body.title = 'index';
+  }))
+  console.log(body.musicalList)
+  res.render('index', body);
 });
 
 // PAGE: Movie_list
@@ -110,7 +142,6 @@ router.get('/play/detail/:seq', async function(req, res, next){
     });
     
     console.log(body.perforDetail)
-  let MAP_KEY = '28910ae55949a264707e358c470e76a5';
   res.render('pages/category/play_detail', body);
 });
 
