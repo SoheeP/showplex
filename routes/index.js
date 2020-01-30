@@ -17,7 +17,7 @@ router.get('/', async function(req, res, next) {
   }
   let ratedMusicalConfig = {
     method: 'get',
-    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/realm?requestTime=20200101&realmCode=B000&cPage=1&rows=10&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=1&${encodeURIComponent('serviceKey')}=MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`,
+    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/realm?requestTime=20200101&realmCode=B000&cPage=1&rows=20&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=2&${encodeURIComponent('serviceKey')}=MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`,
   }
 
   await axios.all([
@@ -35,8 +35,7 @@ router.get('/', async function(req, res, next) {
     body.perforList = resObjPlay.response.msgBody.perforList;
     body.musicalList = resObjMusical.response.msgBody.perforList;
     body.title = 'index';
-  }))
-  console.log(body.musicalList)
+  }));
   res.render('index', body);
 });
 
@@ -108,6 +107,7 @@ router.get('/play/list', async function(req, res, next){
     body.perforList = resObj.response.msgBody.perforList;
     body.title = 'play_list';
   })
+  console.log(body.perforList)
   res.render('pages/category/play_list', body)
 })
 
@@ -117,31 +117,50 @@ router.get('/play/list', async function(req, res, next){
 router.get('/play/detail/:seq', async function(req, res, next){
   let body = {};
   let play_id = req.params.seq; 
-  let HOST = `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/`;
-
   let KEY = `MJd01k6JuHDKC6itg7A722SgdBKTKKnqXWo48ZZxWnNHPy4s6ODfypjmdUEwPRBqzzT6z5zUGrk1TSY2zdmjjw%3D%3D`;
 
-  await axios.get(`${HOST}?seq=${play_id}&${encodeURIComponent('serviceKey')}=${KEY}`
-  )
-  .then(function(res){
-
-      let convertJson = xml_js.xml2json(res.data, {
+  let playDetailConfig = {
+    method: 'get',
+    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/d/?seq=${play_id}&${encodeURIComponent('serviceKey')}=${KEY}`,
+  }
+  
+  let randomSortby = Math.floor(Math.random() * 3)+1;
+  let randomSortbyConfig = {
+    method: 'get',
+    url: `http://www.culture.go.kr/openapi/rest/publicperformancedisplays/realm?requestTime=20200101&realmCode=A000&cPage=1&rows=10&place=&gpsxfrom=&gpsyfrom=&gpsxto=&gpsyto=&keyword=&sortStdr=${randomSortby}&${encodeURIComponent('serviceKey')}=${KEY}`
+  };
+  console.log(randomSortbyConfig.url, 'url');
+  await axios.all([
+    AxiosConfig(playDetailConfig),
+    AxiosConfig(randomSortbyConfig)
+  ])
+  .then(axios.spread(function(detail, random){
+      let convertJsonDetail = xml_js.xml2json(detail.data, {
         compact: true,
         spaces: 2
       });
-      let resObj = JSON.parse(convertJson);
-      body.perforDetail = resObj.response.msgBody.perforInfo;
+      let convertJsonRandom = xml_js.xml2json(random.data, {
+        compact: true,
+        spaces: 2
+      });
+      let resObjDetail = JSON.parse(convertJsonDetail);
+      let resObjRandom = JSON.parse(convertJsonRandom);
+
+      console.log(resObjRandom, 'object');
+      body.perforDetail = resObjDetail.response.msgBody.perforInfo;
+      body.perforRandomList = resObjRandom.response.msgBody.perforList;
+
       let startDate = convertTimeToKorean(body.perforDetail.startDate._text);
       let endDate = convertTimeToKorean(body.perforDetail.endDate._text);
       body.perforDetail.startDate._text = startDate;
-      body.perforDetail.endDate._text = endDate
+      body.perforDetail.endDate._text = endDate;
       body.title = 'play_detail';
-    })
+      }))
     .catch(function(err){
       console.log('err:', err);
     });
     
-    console.log(body.perforDetail)
+    console.log(body.perforRandomList)
   res.render('pages/category/play_detail', body);
 });
 
