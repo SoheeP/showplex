@@ -88,8 +88,8 @@
         <div class="swiper-wrapper">
           <% perforList.map(list => { %>
           <div class="swiper-slide">
-            <a href="/play/detail/<%= list.seq._text %>" class="link-block">
-              <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text%>">
+            <a href="/play/detail/<%= list.mt20id._text %>" class="link-block">
+              <img src="<%= list.poster._text%>" alt="<%= list.prfnm._text%>">
             </a>
           </div>
           <% }) %>
@@ -118,8 +118,8 @@
         <div class="swiper-wrapper">
           <% musicalList.map(list => { %>
             <div class="swiper-slide">
-              <a href="/musical/detail/<%= list.seq._text %>" class="link-block">
-                <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text%>">
+              <a href="/musical/detail/<%= list.mt20id._text %>" class="link-block">
+                <img src="<%= list.poster._text%>" alt="<%= list.prfnm._text%>">
               </a>
             </div>
             <% }) %>
