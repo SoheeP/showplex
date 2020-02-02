@@ -1,64 +1,6 @@
 //Layout style like header, footer, sidebar etc.
 
-// header
-.header__nav{
-  background-color: $pointColor_red;
-  height: 70px;
-  color: #fff;
-  z-index: 100;
-  @include clearFloat;
-}
 
-// side menu
-.aside__menu{
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #400A14;
-  border-right: 10px solid $pointColor_red;
-  width: 15%;
-  height: calc(100% + 170px);
-  padding: 0 20px;
-  &__title{
-    margin-top: 145px;
-    padding-bottom: 15px;
-    font-size: $ft_large;
-  }
-  .link-block{
-    color: #fff;
-  }
-  .link-block.active{
-    color: $pointColor_yellow;
-  }
-  &__item{
-    padding: 15px 0;
-    font-size: $ft_large;
-  }
-  &__button{
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    background-color: $pointColor_red;
-    padding: .75rem .375rem;
-    .material-icons{
-      color: #fff;
-    }
-  }
-}
-
-//footer
-.footer{
-  position: relative;
-  background-color: $pointColor_red;
-  height: 150px;
-  margin-top: 120px;
-  z-index: 100;
-  &__list{
-    padding: 50px 0 30px;
-    &__item{
-      font-size: $ft_medium;
-      padding-right: 45px;
-    }
-  }
-}
-
+@import 'public/src/assets/scss/common/components/partial/header.scss';
+@import 'public/src/assets/scss/common/components/partial/aside.scss';
+@import 'public/src/assets/scss/common/components/partial/footer.scss';

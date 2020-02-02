@@ -1,0 +1,42 @@
+
+.aside__menu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #400A14;
+  border-right: 10px solid $pointColor_red;
+  width: 15%;
+  height: calc(100% + 170px);
+  padding: 0 20px;
+  transition: .5s;
+  &__title{
+    margin-top: 145px;
+    padding-bottom: 15px;
+    font-size: $ft_large;
+  }
+  .link-block{
+    color: #fff;
+  }
+  .link-block.active{
+    color: $pointColor_yellow;
+    font-weight: bold;
+  }
+  &__item{
+    padding: 15px 0;
+    font-size: $ft_large;
+  }
+  &__button{
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    background-color: $pointColor_red;
+    padding: .75rem .375rem;
+    .material-icons{
+      color: #fff;
+    }
+  }
+  &.fold{
+    width: 0;
+    padding: 0;
+  }
+}

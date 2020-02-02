@@ -1,0 +1,22 @@
+
+.footer{
+  position: relative;
+  background-color: $pointColor_red;
+  height: 150px;
+  margin-top: 120px;
+  z-index: 100;
+  &__list{
+    padding: 50px 0 30px;
+    &__item{
+      font-size: $ft_medium;
+      padding-right: 45px;
+    }
+  }
+}
+
+.footer__bottom{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}

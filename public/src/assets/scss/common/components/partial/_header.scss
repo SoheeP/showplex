@@ -1,0 +1,8 @@
+
+.header__nav{
+  background-color: $pointColor_red;
+  height: 70px;
+  color: #fff;
+  z-index: 100;
+  @include clearFloat;
+}
