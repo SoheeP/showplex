@@ -11,19 +11,18 @@
   <div class="section__detail">
     <div class="row wrap">
       <div class="col-6 padding-none margin-none">
-        <img src="<%= perforDetail.imgUrl._text %>" alt="poster" class="section__detail__poster">
+        <img src="<%= perforDetail.poster._text %>" alt="<%= perforDetail.prfnm %>" class="section__detail__poster">
       </div>
       <div class="col-6 padding-none margin-none">
         <h2 class="section__detail__title strong">
-          <%= perforDetail.title._text %>
+          <%= perforDetail.prfnm._text %>
         </h2>
         <div class="section__detail__subtitle">
-          <span class="date"><%= perforDetail.startDate._text %> ~ <%= perforDetail.endDate._text %></span> 
-          <p class="section__detail__info">
-            <span class="area"><%= perforDetail.area._text%></span>, 
-            <span class="place"><%= perforDetail.place._text %></span>
+          <span class="date"><%= perforDetail.prfpdfrom._text %> ~ <%= perforDetail.prfpdto._text %></span>, <span class="age"><%= perforDetail.prfage._text %></span> 
+          <p class="section__detail__info"> 
+            <span class="place">장소: <%= perforDetail.fcltynm._text %></span>, <br>
+            <span class="cast">출연진: <%= perforDetail.prfcast._text %></span>
           </p>
-          <a href="<%=perforDetail.url._text %>" class="link-block book">예매하러 가기</a>
         </div>
       </div>
     </div>
@@ -84,13 +83,21 @@
       </div>
       <div class="swiper-container-mini">
         <div class="swiper-wrapper">
-          <% perforRandomList.map( list => { %>
-          <div class="swiper-slide">
-            <a href="/play/detail/<%= list.seq._text%>" class="link-blcok">
-              <img src="<%= list.thumbnail._text%>" alt="<%= list.title._text %>">
-            </a>
-          </div>
-          <% }) %>
+          <% if(perforRandomList.length > 1){ %>
+            <% perforRandomList.map( list => { %>
+              <div class="swiper-slide">
+                <a href="/play/detail/<%= list.mt20id._text%>" class="link-blcok">
+                  <img src="<%= list.poster._text%>" alt="<%= list.prfnm._text %>">
+                </a>
+              </div>
+              <% }) %> 
+          <% } else { %>
+            <div class="swiper-slide">
+              <a href="/play/detail/<%= perforRandomList.mt20id._text%>" class="link-blcok">
+                <img src="<%= perforRandomList.poster._text%>" alt="<%= perforRandomList.prfnm._text %>">
+              </a>
+            </div>
+          <% } %>
         </div>
         <!-- If we need navigation buttons -->
         <div class="section__slide-mini__button-prev">

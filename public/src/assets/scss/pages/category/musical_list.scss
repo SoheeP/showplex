@@ -1,0 +1,80 @@
+@import 'public/src/assets/scss/common/base_list/base';
+
+.section__slide-main {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+
+  .material-icons {
+      font-size: 50px;
+      color: $pointColor_yellow
+  }
+
+  &__button-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  &__button-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
+.section__slide-part {
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  &.recommend {
+    margin-top: 150px;
+  }
+
+  &.rated {
+    margin-top: 100px;
+  }
+
+  // height: 406px;
+  .section__title_box {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .section__title {
+    display: inline-block;
+    font-size: $ft_title;
+    background-color: $dark_gray;
+    padding-right: 30px;
+  }
+
+  .swiper-container-part {
+    overflow: hidden;
+  }
+
+  .material-icons {
+    font-size: 36px;
+    color: $pointColor_yellow;
+  }
+
+  &__button-prev {
+    position: absolute;
+    top: calc(50% + 36px);
+    left: 10%;
+    cursor: pointer;
+  }
+
+  &__button-next {
+    position: absolute;
+    top: calc(50% + 36px);
+    right: 10%;
+    cursor: pointer;
+  }
+}

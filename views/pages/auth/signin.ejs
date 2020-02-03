@@ -35,7 +35,9 @@
         </div>
     </form>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <div class="footer__bottom">
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/auth/signin'})%>
 </body>
 
