@@ -18,6 +18,7 @@ function convertTimeToKorean(time){
 svgCaptcha.options.charPreset = '0123456789';
 function createSvgCaptcha(){
   return svgCaptcha.create({
+    width: 125,
     size: 6,
     color: true,
     noise: 1,
