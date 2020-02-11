@@ -47,7 +47,7 @@ body{
 .ft-white{
   color: #fff;
   transition: all .2s;
-  &:hover{
+  &:hover, &:active, &:focus{
     color: $pointColor_yellow;
   }
 }
@@ -65,3 +65,4 @@ body{
 .link-block{
   display: block;
 }
+
