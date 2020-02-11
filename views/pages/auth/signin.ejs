@@ -9,24 +9,24 @@
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fluid">
     <h1 class="signin__title">Sign in</h1>
-    <form class="signin__form">
+    <form class="signin__form" method="POST" action="/auth/signin">
       <div class="form-row justify-content-center">
         <div class="col-4">
           <div class="form-group">
             <label for="email" class="signin__form__label strong">Your Email</label>
-            <input type="email" class="form-control signin__form__input" id="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control signin__form__input" id="email" name="email" aria-describedby="emailHelp" required>
           </div>
           <div class="form-group">
             <label for="password" class="signin__form__label strong">Password</label>
-            <a href="">
-              <small id="passwordHelp" class="form-text signin__form__help">Forgot your password?</small>
+            <a href="" class="signin__form__help">
+              <small id="passwordHelp" class="form-text">Forgot your password?</small>
             </a>
-            <input type="password" class="form-control signin__form__input" id="password">
+            <input type="password" class="form-control signin__form__input" id="password" name="password" required>
           </div>
         </div>
       </div>
       <div class="d-flex justify-content-center signin__button_box">
-        <button type="submit" class="btn signin__button-login ">Sign up</button>
+        <button type="submit" class="btn signin__button-login ">Sign in</button>
         <a href="/" class="btn signin__button-cancel ">Home</a>
       </div>
   
