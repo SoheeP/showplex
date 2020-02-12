@@ -15,15 +15,22 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link ft-white header__link strong" href="/auth/signup">Sign up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link ft-white header__link strong" href="/auth/signin">Sign in</a>
-      </li>
+      <% if (!loginData) { %>
+        <li class="nav-item">
+          <a class="nav-link ft-white header__link strong" href="/auth/signup">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ft-white header__link strong" href="/auth/signin">Sign in</a>
+        </li>
+        
+        <% } else { %>
       <li class="nav-item">
         <a class="nav-link ft-white header__link strong" href="/users/mypage">My page</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link ft-white header__link strong" href="/auth/signout">Sign out</a>
+      </li>
+      <% } %>
     </ul>
   </div>
 </nav>

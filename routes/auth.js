@@ -90,12 +90,27 @@ router.route('/signin')
       console.log(req.session, 'session');
       res.redirect('/')
     } else if(data.result === 2){
-      alert('아이디나 패스워드가 틀렸습니다.');
       res.redirect('/auth/signin');
+      res.json({ result: 2 })
     }
   })
-  
-
 });
+
+router.route('/signout')
+.get((req, res, next) => {
+  if (req.session){
+    console.log('로그아웃');
+    req.session.destroy((err) => {
+      if(err){
+        console.log(`세션 삭제 에러`);
+        return;
+      }
+      console.log('세션삭제 성공');
+      res.render('/');
+    });
+  } else {
+    console.log('저장된 session이 없습니다.')
+  }
+})
 
 module.exports = router;
