@@ -14,7 +14,7 @@
         <div class="col-4">
           <div class="form-group">
             <label for="email" class="signup__form__label strong">Your Email</label>
-            <input type="email" class="form-control signup__form__input" id="email" name="email" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control signup__form__input" id="email" name="email" aria-describedby="emailHelp" value="my1@mail.com" required>
           </div>
           <!-- <div class="form-group">
             <label for="verifiedNumver" class="signup__form__label strong">Verified Number</label>
@@ -30,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="verifiedNumver" class="signup__form__label strong">Name</label>
-            <input type="text" class="form-control signup__form__input" id="username" name="username" aria-describedby="username">
+            <input type="text" class="form-control signup__form__input" id="username" value="It" name="username" aria-describedby="username">
           </div>
           <div class="form-group">
             <label for="phoneNumber" class="signup__form__label strong">Phone Number</label>
@@ -40,17 +40,17 @@
             <label for="captha" class="signup__form__label strong">Captha Number</label>
             <div class="form-row">
               <div class="col-3">
-                <input type="text" class="form-control signup__form__input " placeholder="854723" disabled>
+                <span type="text" class="captcha__data"><%- captcha.data %></span>
               </div>
               <div class="col">
-                <button class="btn signup__button-refresh">
+                <a href="#none" class="btn signup__button-refresh">
                   <div class="material-icons">
                     refresh
                   </div>
-                </button>
+                </a>
               </div>
               <div class="col-6 justify-cotent-end">
-                <input type="text" class="form-control signup__form__input" id="captha" placeholder="Number" required>
+                <input type="text" class="form-control signup__form__input" id="captcha" placeholder="Number" required>
               </div>
             </div>
           </div>

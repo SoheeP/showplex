@@ -1,5 +1,6 @@
 let common = {};
 
+
 function fadeIn (el, ms){
   el = document.querySelector(el);
   el.style.opacity = 0;
@@ -21,4 +22,15 @@ function fadeIn (el, ms){
   }
 };
 
+// get element
+function elm(elm){
+  let target = document.querySelectorAll(elm);
+  if (target.length === 0) return null;
+  if (target !== undefined || target !== null){
+    return (target.length === 1) ? target[0] : target;
+  } else {
+    return null;
+  }
+}
 common.fadeIn = fadeIn;
+common.elm = elm;
