@@ -29,6 +29,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// NOTE: 공통으로 사용할 function 및 properties
+app.use(function(req, res, next){
+  res.locals.sess = req.session;
+  res.locals.loginData = req.session.user;
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
