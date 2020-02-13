@@ -18,12 +18,10 @@ captchaRefreshBtn.addEventListener('click', () => {
     method: 'get',
   }
   axios(captchaConfig).then((response) => {
-    let {
-      data
-    } = response;
+    let { data } = response;
     captchaData.innerHTML = data.captcha.data;
-  })
-})
+  });
+});
 
 // submit
 signupForm.addEventListener('submit', function(e){
@@ -40,10 +38,9 @@ signupForm.addEventListener('submit', function(e){
       phone: phone.value,
       captcha: captchaValue.value,
     }
-  }
+  };
   axios(signupConfig).then((response) => {
     let { data } = response;
-    console.log(data)
     if(data.result === 1 ){
       alert('회원가입을 축하합니다. 확인 버튼을 누르면 로그인 페이지로 이동합니다.');
       window.location.href = '/auth/signin';
@@ -51,6 +48,6 @@ signupForm.addEventListener('submit', function(e){
       alert('이미 가입한 이메일 주소입니다.')
     } else if(data.result === 8){
       alert('자동가입방지 문자를 확인해주세요.')
-    }
-  })
-})
+    };
+  });
+});
