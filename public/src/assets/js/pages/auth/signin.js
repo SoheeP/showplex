@@ -16,6 +16,9 @@ signinForm.addEventListener('submit', (e) => {
     let { data } = response;
     if(data.result === 2){
       alert('이메일이나 패스워드를 확인해주세요.')
+    } else {
+      // 로그인 성공
+      window.location.href = '/';
     }
   })
 })
