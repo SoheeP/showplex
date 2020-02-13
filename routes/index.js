@@ -1,6 +1,7 @@
 const express = require('express');
 const { AxiosConfig, convertTimeToKorean } = require('./common');
 const { axios, xml_js, moment } = require('./npm_modules');
+const { wrap } = require('./middlewares');
 const router = express.Router();
 
 /* GET Index home page. */
