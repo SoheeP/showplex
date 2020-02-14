@@ -16,26 +16,18 @@
             <thead>
               <tr>
                 <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">IP</th>
                 <th scope="col" class="text-center">Date</th>
-                <th scope="col" class="text-center">Time</th>
               </tr>
             </thead>
             <tbody>
+              <% logData.map((list, idx) => { %>
               <tr>
-                <th scope="row" class="text-center">1</th>
-                <td class="text-center">2020-01-01</td class="text-center">
-                <td class="text-center">01:03</td>
+                <th scope="row" class="text-center"><%= idx+1 %></th>
+                <td class="text-center"><%= list.ip %></td>
+                <td class="text-center"><%= list.loginTime %></td class="text-center">
               </tr>
-              <tr>
-                <th scope="row" class="text-center">2</th>
-                <td class="text-center">2020-01-01</td>
-                <td class="text-center">11:11</td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center">3</th>
-                <td class="text-center">2020-01-03</td>
-                <td class="text-center">23:11</td>
-              </tr>
+              <% }) %>
             </tbody>
           </table>
         </div>
@@ -71,7 +63,9 @@
       </div>
     </div>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <div class="footer__bottom">
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/mypage/dashboard'}) %>
 </body>
 </html>
