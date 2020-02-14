@@ -1,5 +1,6 @@
 let profileForm = common.elm('.profile__form'),
 password        = common.elm('#password'),
+checkPassword   = common.elm('#checkPassword'),
 username        = common.elm('#username'),
 phone           = common.elm('#phoneNumber');
 
@@ -10,7 +11,7 @@ profileForm.addEventListener("submit", (e) => {
     url: '/users/profile/change',
     method: 'post',
     data: {
-      passowrd: password.value,
+      password: password.value,
       username: username.value,
       phone: phone.value
     }
@@ -18,5 +19,5 @@ profileForm.addEventListener("submit", (e) => {
   axios(changeConfig).then((response) => {
     let { data } = response;
     console.log(data)
-  })
-})
+  });
+});
