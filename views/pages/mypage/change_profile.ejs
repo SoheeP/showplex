@@ -15,11 +15,11 @@
         <div class="col-4">
           <div class="form-group">
             <label for="email" class="profile__form__label strong">Your Email</label>
-            <input type="email" class="form-control profile__form__input" id="email" aria-describedby="emailHelp" disabled placeholder="gg">
+            <input type="email" class="form-control profile__form__input" id="email" aria-describedby="emailHelp" disabled placeholder="<%= userData.email %>">
           </div>
           <div class="form-group">
             <label for="password" class="profile__form__label strong">Password</label>
-            <input type="password" class="form-control profile__form__input" id="password">
+            <input type="password" class="form-control profile__form__input" id="password" name="password">
           </div>
           <div class="form-group">
             <label for="checkPassword" class="profile__form__label strong">Confirm Password</label>
@@ -27,11 +27,11 @@
           </div>
           <div class="form-group">
             <label for="verifiedNumver" class="profile__form__label strong">Name</label>
-            <input type="text" class="form-control profile__form__input" id="username" aria-describedby="username">
+            <input type="text" class="form-control profile__form__input" value="<%= userData.username %>" id="username" name="username" aria-describedby="username">
           </div>
           <div class="form-group">
             <label for="phoneNumber" class="profile__form__label strong">Phone Number</label>
-            <input type="text" class="form-control profile__form__input" id="phoneNumber" aria-describedby="phoneNumber">
+            <input type="text" class="form-control profile__form__input" value="<%= userData.phone %>" id="phoneNumber" name="phone" aria-describedby="phoneNumber">
           </div>
         </div>
       </div>
