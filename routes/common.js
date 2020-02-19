@@ -1,4 +1,4 @@
-const { axios, moment, svgCaptcha } = require('./npm_modules');
+const { axios, moment, svgCaptcha, xml_js } = require('./npm_modules');
 
 function AxiosConfig(config){
   return axios(config);
@@ -14,6 +14,10 @@ function convertTimeToKorean(time){
   return moment(time).format('YYYY년 MM월 DD일')
 }
 
+function convertXmlToJson(xmldoc){
+  let convertJson = xml_js.xml2json(xmldoc, {compact: true, spaces: 2});
+  return JSON.parse(convertJson);
+}
 
 svgCaptcha.options.charPreset = '0123456789';
 function createSvgCaptcha(){
@@ -30,3 +34,4 @@ exports.AxiosConfig         = AxiosConfig;
 exports.AxiosWithDB         = AxiosWithDB;
 exports.convertTimeToKorean = convertTimeToKorean;
 exports.createSvgCaptcha    = createSvgCaptcha;
+exports.convertXmlToJson = convertXmlToJson;

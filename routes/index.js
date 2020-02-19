@@ -1,5 +1,5 @@
 const express = require('express');
-const { AxiosConfig, convertTimeToKorean } = require('./common');
+const { AxiosConfig, convertTimeToKorean, convertXmlToJson } = require('./common');
 const { axios, xml_js, moment } = require('./npm_modules');
 const { wrap } = require('./middlewares');
 const router = express.Router();
@@ -30,14 +30,12 @@ router.get('/', async function(req, res, next) {
     AxiosConfig(ratedMusicalConfig)
   ])
   .then(axios.spread(function(movie, play, musical){
-    let convertJsonPlay = xml_js.xml2json(play.data, {compact: true, spaces: 2})
-    let resObjPlay = JSON.parse(convertJsonPlay);
-    let convertJsonMusical = xml_js.xml2json(musical.data, {compact: true, spaces: 2})
-    let resObjMusical = JSON.parse(convertJsonMusical);
+    let playList = convertXmlToJson(play.data);
+    let musicalList = convertXmlToJson(musical.data);
 
     body.ratedMovieData = movie.data.data.movies;
-    body.perforList = resObjPlay.dbs.db;
-    body.musicalList = resObjMusical.dbs.db;
+    body.perforList = playList.dbs.db;
+    body.musicalList = musicalList.dbs.db;
     body.title = 'index';
   }));
   res.render('index', body);
@@ -73,13 +71,13 @@ router.get('/movie/detail/:id', async function(req, res, next){
   let movie_id = req.params.id;
   let movieDetailConfig = {
     method: 'get',
-    url: `https://yts.tl/api/v2/movie_details.json?movie_id=${movie_id}`
+    url: `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}`
   };
   let sortArr = ['title', 'year', 'rating', 'peers', 'seeds', 'download_count', 'like_count', 'date_added'];
   let randomSortby = sortArr[Math.floor(Math.random() * sortArr.length)];
   let randomSortbyConfig = {
     method: 'get',
-    url: `https://yts.tl/api/v2/list_movies.json?sort_by=${randomSortby}&limit=15`
+    url: `https://yts.mx/api/v2/list_movies.json?sort_by=${randomSortby}&limit=15`
   };
   await axios.all([
     AxiosConfig(movieDetailConfig),
@@ -93,6 +91,7 @@ router.get('/movie/detail/:id', async function(req, res, next){
   .catch(function(err){
     console.log('err:', err);
   });
+  console.log(body.randomSort)
   res.render('pages/category/movie_detail', body);
 })
 
@@ -105,9 +104,8 @@ router.get('/play/list', async function(req, res, next){
 
   await axios.get(`${HOST}?service=${KEY}&stdate=20180101&eddate=20200201&cpage=1&rows=15&shcate=AAAA&prfstate=02&signgucode=11`)
   .then(function(res){
-    let convertJson = xml_js.xml2json(res.data, {compact: true, spaces: 2})
-    let resObj = JSON.parse(convertJson);
-    body.perforList = resObj.dbs.db;
+    let playList = convertXmlToJson(res.data);
+    body.perforList = playList.dbs.db;
     body.title = 'play_list';
   })
   res.render('pages/category/play_list', body)
@@ -116,9 +114,9 @@ router.get('/play/list', async function(req, res, next){
 
 
 // PAGE: Play_detail
-router.get('/play/detail/:seq', async function(req, res, next){
+router.get('/play/detail/:seq', async function (req, res, next) {
   let body = {};
-  let play_id = req.params.seq; 
+  let play_id = req.params.seq;
   let HOST = `http://kopis.or.kr/openApi/restful/pblprfr`
   let KEY = `dcd5cdf9f05649a9a919e18323a8d4bc`;
 
@@ -126,7 +124,6 @@ router.get('/play/detail/:seq', async function(req, res, next){
     method: 'get',
     url: `${HOST}/${play_id}?service=${KEY}`,
   }
-  
   let randomAreaArr = [11, 26, 27, 28];
   let randomSortby = randomAreaArr[Math.floor(Math.random() * randomAreaArr.length)];
   let randomSortbyConfig = {
@@ -137,27 +134,16 @@ router.get('/play/detail/:seq', async function(req, res, next){
     AxiosConfig(playDetailConfig),
     AxiosConfig(randomSortbyConfig)
   ])
-  .then(axios.spread(function(detail, random){
-      let convertJsonDetail = xml_js.xml2json(detail.data, {
-        compact: true,
-        spaces: 2
-      });
-      let convertJsonRandom = xml_js.xml2json(random.data, {
-        compact: true,
-        spaces: 2
-      });
-      let resObjDetail = JSON.parse(convertJsonDetail);
-      let resObjRandom = JSON.parse(convertJsonRandom);
-
-      body.perforDetail = resObjDetail.dbs.db;
-      body.perforRandomList = resObjRandom.dbs.db;
-
-      body.title = 'play_detail';
-      }))
-    .catch(function(err){
-      console.log('err:', err);
-    });
-    
+  .then(axios.spread(function (detail, random) {
+    let playDetail = convertXmlToJson(detail.data);
+    let randomSort = convertXmlToJson(random.data);
+    body.perforDetail = playDetail.dbs.db;
+    body.perforRandomList = randomSort.dbs.db;
+    body.title = 'play_detail';
+  }))
+  .catch(function (err) {
+    console.log('err:', err);
+  });
   res.render('pages/category/play_detail', body);
 });
 
@@ -171,9 +157,9 @@ router.get('/musical/list', async function(req, res, next){
 
   await axios.get(`${HOST}?service=${KEY}&stdate=20100101&eddate=20201231&cpage=1&rows=15&shcate=AAAB&prfstate=02`)
   .then(function(res){
-    let convertJson = xml_js.xml2json(res.data, {compact: true, spaces: 2})
-    let resObj = JSON.parse(convertJson);
-    body.musicalList = resObj.dbs.db;
+    let musicalList = convertXmlToJson(res.data);
+    
+    body.musicalList = musicalList.dbs.db;
     body.title = 'musical_list';
   })
   res.render('pages/category/musical_list', body)
@@ -205,27 +191,16 @@ router.get('/musical/detail/:seq', async function(req, res, next){
     AxiosConfig(randomSortbyConfig)
   ])
   .then(axios.spread(function(detail, random){
-      let convertJsonDetail = xml_js.xml2json(detail.data, {
-        compact: true,
-        spaces: 2
-      });
-      let convertJsonRandom = xml_js.xml2json(random.data, {
-        compact: true,
-        spaces: 2
-      });
-      let resObjDetail = JSON.parse(convertJsonDetail);
-      let resObjRandom = JSON.parse(convertJsonRandom);
-
-      body.musicalDetail = resObjDetail.dbs.db;
-      body.musicalRandomList = resObjRandom.dbs.db;
-
-      body.title = 'musical_detail';
-      }))
-    .catch(function(err){
-      console.log('err:', err);
-    });
-    
-    console.log(body.musicalDetail)
+    let musicalDetail = convertXmlToJson(detail.data);
+    let randomSort = convertXmlToJson(random.data);
+    body.musicalDetail = musicalDetail.dbs.db;
+    body.musicalRandomList = randomSort.dbs.db;
+    body.title = 'musical_detail';
+    }))
+  .catch(function(err){
+    console.log('err:', err);
+  });
+  
   res.render('pages/category/musical_detail', body);
 });
 
