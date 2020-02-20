@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/board/freeboard', title: 'Free Board'})%>
+</head>
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <div class="container-fluid">
+    <h1 class="board__title">Free Board</h1>
+    <div class="section__board">
+      <div class="wrap">
+        <ul class="list-unstyled section__board__g">
+          <li class="media">
+            <p class="mt-0 mb-1">Title List-based media object</p>
+            <p class="align-self-top section__board__author ml-3">Username</p>
+            <p class="align-self-top section__board__date ml-3">2020-01-01</p>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-end section__comment__button_box">
+          <button type="button" class="btn section__comment__button">Write Comment</button>
+        </div>
+      </div>
+      <nav aria-label="Page navigation nav__pagination">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="nav__pagination__button strong" href="#" aria-label="Previous">
+              <span aria-hidden="true">
+                <i class="material-icons">navigate_before</i>
+              </span>
+            </a>
+          </li>
+          <li class="page-item"><a class="nav__pagination__link strong active" href="#">1</a></li>
+          <li class="page-item"><a class="nav__pagination__link strong" href="#">2</a></li>
+          <li class="page-item"><a class="nav__pagination__link strong" href="#">3</a></li>
+          <li class="page-item">
+            <a class="nav__pagination__button" href="#" aria-label="Next">
+              <span aria-hidden="true">
+                <i class="material-icons">navigate_next</i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/freeboard', title: 'Free Board'})%>
+</body>
+</html>
