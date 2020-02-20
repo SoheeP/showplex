@@ -12,7 +12,7 @@
 
     <div class="row wrap">
       <div class="col-6 padding-none margin-none">
-        <img src="https://yts.tl/<%= movieInfo.large_cover_image %>" alt="poster" class="section__detail__poster">
+        <img src="<%= movieInfo.large_cover_image %>" alt="poster" class="section__detail__poster">
       </div>
       <div class="col-6 padding-none margin-none">
         <h2 class="section__detail__title strong"><%= movieInfo.title %></h2>
@@ -91,7 +91,7 @@
           <% randomSort.map( list =>{ %>
           <div class="swiper-slide">
             <a href="/movie/detail/<%= list.id %>" class="link-blcok">
-              <img src="https://yts.tl/<%= list.medium_cover_image %>" alt="<%= list.title %>">
+              <img src="<%= list.medium_cover_image %>" alt="<%= list.title %>">
             </a>
           </div>
           <% }) %>
