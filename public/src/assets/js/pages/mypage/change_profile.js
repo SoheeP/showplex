@@ -19,5 +19,7 @@ profileForm.addEventListener("submit", (e) => {
   axios(changeConfig).then((response) => {
     let { data } = response;
     console.log(data)
+    alert('요청하신 정보가 수정되었습니다!');
+    
   });
 });
