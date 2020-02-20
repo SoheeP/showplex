@@ -20,6 +20,6 @@ profileForm.addEventListener("submit", (e) => {
     let { data } = response;
     console.log(data)
     alert('요청하신 정보가 수정되었습니다!');
-    
+    window.location.href= '/users/change_profile';
   });
 });

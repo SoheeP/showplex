@@ -14,7 +14,6 @@ router.route('/mypage')
   await AxiosWithDB(logConfig, (response) => {
     let { data } = response;
     body.logData = data.log;
-    console.log(body.logData);
   })
   res.render('pages/mypage/dashboard', body)
 });
@@ -23,7 +22,6 @@ router.route('/mypage')
 router.route('/change_profile').get(isLogged, wrap(async (req, res, next) => {
   let body = {};
   body.userData = req.session.user;
-  console.log(req.session.user);
   res.render('pages/mypage/change_profile', body)
 }));
 
@@ -33,7 +31,6 @@ router.route('/profile/change').post(isLogged, (req, res, next) => {
   username = req.body.username,
   phone = req.body.phone;
   console.log(password, username, phone, 'Want Change!!');
-  console.log(req.body, 'body');
   let { ...reqBody } = req.body;
 
   let data = {
@@ -41,7 +38,7 @@ router.route('/profile/change').post(isLogged, (req, res, next) => {
   };
   for(let key in reqBody){
     if(reqBody[key] === '' || reqBody[key] === null){
-      console.log(`${data}`)
+      console.log(`${data[key]}`)
     } else {
       data[key] = reqBody[key];
     }
@@ -57,9 +54,11 @@ router.route('/profile/change').post(isLogged, (req, res, next) => {
   AxiosWithDB(changeConfig, (response) => {
     let { data } = response;
     if(data.result === 1){
+      //After modifying user info
+      req.session.user = data.userData;
       res.json({ result: 1 });
     }
-  })
+  });
 })
 
 module.exports = router;
