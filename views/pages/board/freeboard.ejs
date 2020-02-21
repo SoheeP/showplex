@@ -9,15 +9,28 @@
     <h1 class="board__title">Free Board</h1>
     <div class="section__board">
       <div class="wrap">
-        <ul class="list-unstyled section__board__g">
-          <li class="media">
-            <p class="mt-0 mb-1">Title List-based media object</p>
-            <p class="align-self-top section__board__author ml-3">Username</p>
-            <p class="align-self-top section__board__date ml-3">2020-01-01</p>
+        <ul class="list-unstyled section__board__list">
+          <% for (var i = 0 ; i < 10 ; i++) { %>
+          <li class="section__board__item">
+            <p class="section__board__box d-flex justify-content-between">
+              <span class="section__board__seq"><%= i %></span>
+              <span class="section__board__title ml-3">List-based media object</span>
+              <span class="section__board__author ml-5">Username</span>
+              <span class="section__board__date ml-3">2020-01-01</span>
+            </p>
+          </li>
+          <% } %>
+          <li class="section__board__item">
+            <p class="section__board__box  d-flex justify-content-between">
+              <span class="section__board__seq"><%= i %></span>
+              <span class="section__board__title ml-3">List-based media ob</span>
+              <span class="section__board__author ml-5">Username</span>
+              <span class="section__board__date ml-3">2020-01-01</span>
+            </p>
           </li>
         </ul>
-        <div class="d-flex justify-content-end section__comment__button_box">
-          <button type="button" class="btn section__comment__button">Write Comment</button>
+        <div class="d-flex justify-content-end section__board__button_box">
+          <a href="/board/freeboard/write" class="btn section__board__button">Write</a>
         </div>
       </div>
       <nav aria-label="Page navigation nav__pagination">
@@ -44,6 +57,6 @@
     </div>
   </div>
   <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
-  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/freeboard', title: 'Free Board'})%>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/freeboard' })%>
 </body>
 </html>
