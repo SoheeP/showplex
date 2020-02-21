@@ -14,7 +14,21 @@ router.get('/freeboard/write', (req, res, next) => {
   res.render('pages/board/write', {title: 'Free Board'})
 })
 .post((req, res, next) => {
+
+  let text = req.body.text,
+  contents = req.body.contents;
   
+  let writeConfig = {
+    method: 'post',
+    url: '/board/write',
+    data: {
+      text: text,
+      contents: contents
+    }
+  }
+  AxiosWithDB(writeConfig, (response) => {
+    
+  })
 })
 
 module.exports = router;
