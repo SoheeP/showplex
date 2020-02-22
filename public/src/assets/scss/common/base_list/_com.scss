@@ -17,9 +17,10 @@ body{
   @include respond-to('extraL'){
     width: 960px;
   };
-  @include respond-to('extraL'){
+  @include respond-to('extraXL'){
     width: 1440px;
   };
+  width: 1440px;
   margin: auto;
 }
 

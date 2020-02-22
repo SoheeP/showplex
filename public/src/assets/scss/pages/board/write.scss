@@ -1,0 +1,22 @@
+@import 'public/src/assets/scss/common/base_list/base';
+
+.write__title{
+  @include pageBigTitle;
+}
+
+.note-toolbar{
+  background-color: $light_gray;
+}
+
+.section__write{
+  &__button {
+    @include makeButton(true)
+  }
+  &__button_box{
+    margin-top: 30px;
+  }
+  &__button.list {
+    @include makeButton('gray');
+    margin-left: 30px;
+  }
+}

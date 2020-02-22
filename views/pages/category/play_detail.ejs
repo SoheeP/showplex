@@ -50,7 +50,11 @@
       </div>
       <% } %>
       <div class="d-flex justify-content-end section__comment__button_box">
-        <button type="button" class="btn section__comment__button">Write Comment</button>
+        <% if (!loginData) { %>
+          <a href="/auth/signin" class="btn section__comment__button">Sign in</a>
+          <% } else { %>
+            <a href="#none" class="btn section__comment__button">Write Comment</a>
+          <% } %>
       </div>
     </div>
     <nav aria-label="Page navigation nav__pagination">
