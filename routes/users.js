@@ -16,6 +16,7 @@ router.route('/mypage')
     body.logData = data.log;
     console.log(body.logData);
   })
+  console.log(res.locals.loginData, 'res.locals');
   res.render('pages/mypage/dashboard', body)
 });
 
@@ -23,7 +24,8 @@ router.route('/mypage')
 router.route('/change_profile').get(isLogged, wrap(async (req, res, next) => {
   let body = {};
   body.userData = req.session.user;
-  console.log(req.session.user);
+  console.log(req.session.user, 'req');
+  console.log(res.locals.loginData, 'res.locals');
   res.render('pages/mypage/change_profile', body)
 }));
 
@@ -59,7 +61,9 @@ router.route('/profile/change').post(isLogged, (req, res, next) => {
     if(data.result === 1){
       res.json({ result: 1 });
     }
-  })
+  });
+  console.log(req.session.user, 'req');
+  console.log(res.locals.loginData, 'res')
 })
 
 module.exports = router;
