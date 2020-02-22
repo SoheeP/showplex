@@ -9,12 +9,11 @@ let writeForm = common.elm('#writeForm');
 let contents = common.elm('#summernote');
 let title = common.elm('.section__write__title');
 
-console.log(writeForm);
-console.log(textValue);
-console.log(titleValue)
-
 writeForm.addEventListener("submit", (e) =>{
   e.preventDefault();
+  if(title.value === '' || contents.value === ''){
+    alert('입력되지 않았습니다.')
+  } else {
   let writeConfig = {
     url: '/board/freeboard/write',
     method: 'post',
@@ -26,12 +25,12 @@ writeForm.addEventListener("submit", (e) =>{
   axios(writeConfig).then((response) => {
     let { data } = response;
     if(data.result === 1 ){
-      console.log('등록완료')
+      alert('등록이 완료되었습니다.');
+      window.location.href = '/board/freeboard';
     } else if(data.result === 2 ){
-      console.log('무언가의 오류로 등록 실패')
+      alert('등록에 실패하였습니다.');
     }
   })
-  console.log(textValue.value);
-  console.log(titleValue.value);
+  }
 })
 

@@ -4,30 +4,38 @@ const {
   Axios,
   AxiosWithDB,
 } = require('./common');
-const { wrap } = require('./middlewares');
+const { isLogged, wrap } = require('./middlewares');
 
 router.get('/freeboard', (req, res, next)=>{
   res.render('pages/board/freeboard', {title: 'Free board'})
 });
 
-router.get('/freeboard/write', (req, res, next) => {
+router.route('/freeboard/write')
+.get(isLogged, (req, res, next) => {
   res.render('pages/board/write', {title: 'Free Board'})
 })
-.post((req, res, next) => {
+.post(isLogged, (req, res, next) => {
 
-  let text = req.body.text,
+  let username = req.session.user.username,
+  title = req.body.title,
   contents = req.body.contents;
   
   let writeConfig = {
     method: 'post',
     url: '/board/write',
     data: {
-      text: text,
+      username: username,
+      title: title,
       contents: contents
     }
   }
   AxiosWithDB(writeConfig, (response) => {
-    
+    let { data } = response;
+    if(data.result === 1){
+      res.json({ result: 1 });
+    } else if(data.result === 2){
+      res.json({ result: 2 });
+    };
   })
 })
 

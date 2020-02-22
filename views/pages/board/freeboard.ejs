@@ -30,7 +30,11 @@
           </li>
         </ul>
         <div class="d-flex justify-content-end section__board__button_box">
+          <% if (!loginData) { %>
+            <a href="/auth/signin" class="btn section__board__button">Sign in</a>
+          <% } else { %>
           <a href="/board/freeboard/write" class="btn section__board__button">Write</a>
+          <% } %>
         </div>
       </div>
       <nav aria-label="Page navigation nav__pagination">
