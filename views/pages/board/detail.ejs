@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/board/detail', title })%>
+</head>
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <div class="container-fluid">
+    <h1 class="board__title">Free Board</h1>
+    <div class="section__detail">
+      <div class="wrap">
+        <div class="section__detail__title">
+          <%= boardDetail.title %>
+        </div>
+        <div class="section__detail__contents">
+          <%- boardDetail.contents %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/detail'} )%>
+</body>
+</html>

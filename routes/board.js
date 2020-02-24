@@ -4,13 +4,52 @@ const {
   Axios,
   AxiosWithDB,
 } = require('./common');
+const { moment } = require('./npm_modules');
 const { isLogged, wrap } = require('./middlewares');
 
 router.get('/freeboard', (req, res, next)=>{
   req.session.prevUrl = req.originalUrl;
-  res.render('pages/board/freeboard', {title: 'Free board' })
+  let boardListConfig = {
+    url: `/board/freeboard`,
+    method: 'get'
+  }
+  AxiosWithDB(boardListConfig, (response)=> {
+    let body = {
+      list: response.data
+    };
+    for(let key in body){
+      if(key === 'list'){
+        body[key].map(list => {
+          let time = list.time;
+          list.time = moment(time).format('YYYY-MM-DD');
+        });
+      };
+    };
+    body.title = 'Free board';
+    res.render('pages/board/freeboard', body)
+  });
 });
 
+// PAGE: detail page
+router.get('/freeboard/detail/:seq', (req, res, next) => {
+  let id = req.params.seq;
+  let body = {};
+  let freeboardDetailConfig = {
+    url: '/board/detail',
+    method: 'get',
+    data: {
+      id
+    }
+  };
+
+  AxiosWithDB(freeboardDetailConfig, (response) => {
+    body.boardDetail = response.data;
+    body.title = response.data.title
+    res.render('pages/board/detail', body);
+  })
+})
+
+// PAGE: Write
 router.route('/freeboard/write')
 .get(isLogged, (req, res, next) => {
   req.session.prevUrl = req.originalUrl;
