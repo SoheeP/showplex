@@ -6,6 +6,7 @@ const router = express.Router();
 
 /* GET Index home page. */
 router.get('/', async function(req, res, next) {
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let movieApiUrl = `https://yts.tl/api/v2`;
   let perforApiUrl = `http://kopis.or.kr/openApi/restful/pblprfr`;
@@ -43,6 +44,7 @@ router.get('/', async function(req, res, next) {
 
 // PAGE: Movie_list
 router.get('/movie/list', async function(req, res, next){
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let apiUrl = `https://yts.tl/api/v2`;
   let ratedConfig = {
@@ -67,6 +69,7 @@ router.get('/movie/list', async function(req, res, next){
 
 // PAGE: Movie_detail
 router.get('/movie/detail/:id', async function(req, res, next){
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let movie_id = req.params.id;
   let movieDetailConfig = {
@@ -97,6 +100,7 @@ router.get('/movie/detail/:id', async function(req, res, next){
 
 // PAGE: Play_list
 router.get('/play/list', async function(req, res, next){
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let HOST = `http://kopis.or.kr/openApi/restful/pblprfr`;
   
@@ -115,6 +119,7 @@ router.get('/play/list', async function(req, res, next){
 
 // PAGE: Play_detail
 router.get('/play/detail/:seq', async function (req, res, next) {
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let play_id = req.params.seq;
   let HOST = `http://kopis.or.kr/openApi/restful/pblprfr`
@@ -150,6 +155,7 @@ router.get('/play/detail/:seq', async function (req, res, next) {
 
 // PAGE: Musical_list
 router.get('/musical/list', async function(req, res, next){
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let HOST = `http://kopis.or.kr/openApi/restful/pblprfr`;
   
@@ -169,6 +175,7 @@ router.get('/musical/list', async function(req, res, next){
 
 // PAGE: Musical_detail
 router.get('/musical/detail/:seq', async function(req, res, next){
+  req.session.prevUrl = req.originalUrl;
   let body = {};
   let musical_id = req.params.seq; 
   let HOST = `http://kopis.or.kr/openApi/restful/pblprfr`

@@ -7,12 +7,14 @@ const {
 const { isLogged, wrap } = require('./middlewares');
 
 router.get('/freeboard', (req, res, next)=>{
-  res.render('pages/board/freeboard', {title: 'Free board'})
+  req.session.prevUrl = req.originalUrl;
+  res.render('pages/board/freeboard', {title: 'Free board' })
 });
 
 router.route('/freeboard/write')
 .get(isLogged, (req, res, next) => {
-  res.render('pages/board/write', {title: 'Free Board'})
+  req.session.prevUrl = req.originalUrl;
+  res.render('pages/board/write', {title: 'Free Board' })
 })
 .post(isLogged, (req, res, next) => {
 

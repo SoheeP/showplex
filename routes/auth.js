@@ -31,11 +31,7 @@ router.route('/signup')
   res.render('pages/auth/signup', body);
 }))
 .post(wrap((req, res, next) => {
-  let email    = req.body.email,
-  password     = req.body.password,
-  username     = req.body.username,
-  phone        = req.body.phone;
-  verifyNumber = req.body.captcha;
+  let { email, password, username, phone, verifyNumber } = req.body;
 
   if(req.session.captcha === verifyNumber){
     const signupConfig = {
@@ -43,13 +39,13 @@ router.route('/signup')
       url: `/auth/signup`,
       method: 'post',
       data: {
-        email: email,
-        password: password,
-        username: username,
-        phone: phone, 
-        verifyNumber: verifyNumber
+        email,
+        password,
+        username,
+        phone, 
+        verifyNumber
       }
-    }
+    };
     AxiosWithDB(signupConfig, (response) => {
       let { data } = response ;
       if(data.result === 1){
@@ -69,18 +65,16 @@ router.route('/signin')
 }))
 .post(wrap((req, res, next) => {
 
-  let email = req.body.email,
-   password = req.body.password;
+  let { email, password } = req.body;
   
   let signinConfig = {
     method: 'post',
     url: '/auth/signin',
     data: {
-      email: email,
-      password: password
+      email,
+      password
     }
   };
-
   AxiosWithDB(signinConfig, (response) => {
     let data = response.data;
     console.log(data)
