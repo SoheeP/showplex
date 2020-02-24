@@ -10,24 +10,16 @@
     <div class="section__board">
       <div class="wrap">
         <ul class="list-unstyled section__board__list">
-          <% for (var i = 0 ; i < 10 ; i++) { %>
+          <% list.map((list)=> { %>
           <li class="section__board__item">
-            <p class="section__board__box d-flex justify-content-between">
-              <span class="section__board__seq"><%= i %></span>
-              <span class="section__board__title ml-3">List-based media object</span>
-              <span class="section__board__author ml-5">Username</span>
-              <span class="section__board__date ml-3">2020-01-01</span>
-            </p>
+            <a class="section__board__box d-flex justify-content-between" href="/board/freeboard/detail/<%= list.id %>">
+              <span class="section__board__seq"><%= list.id %></span>
+              <span class="section__board__title ml-3"><%= list.title %></span>
+              <span class="section__board__author ml-5"><%= list.author %></span>
+              <span class="section__board__date ml-3"><%= list.time %></span>
+            </a>
           </li>
-          <% } %>
-          <li class="section__board__item">
-            <p class="section__board__box  d-flex justify-content-between">
-              <span class="section__board__seq"><%= i %></span>
-              <span class="section__board__title ml-3">List-based media ob</span>
-              <span class="section__board__author ml-5">Username</span>
-              <span class="section__board__date ml-3">2020-01-01</span>
-            </p>
-          </li>
+          <% }) %>
         </ul>
         <div class="d-flex justify-content-end section__board__button_box">
           <% if (!loginData) { %>
