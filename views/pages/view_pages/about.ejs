@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/view_pages/about', title: 'About us'})%>
+</head>
+<body>
+  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+  <div class="container-fluid">
+    <h1 class="board__title">About Us</h1>
+  </div>
+  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/view_pages/about' })%>
+</body>
+</html>
