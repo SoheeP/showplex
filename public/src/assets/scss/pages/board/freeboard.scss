@@ -22,6 +22,10 @@
 
   &__box{
     width: 100%;
+    transition: all .2s;
+    &:hover{
+      color: $pointColor_yellow_dark;
+    }
   }
 
   &__button_box {
