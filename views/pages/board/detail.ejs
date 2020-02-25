@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/board/detail', title })%>
 </head>
+
 <body>
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fluid">
-    <h1 class="board__title">Free Board</h1>
+    <h1 class="detail__title">Free Board</h1>
     <div class="section__detail">
       <div class="wrap">
-        <div class="section__detail__title">
-          <%= boardDetail.title %>
+        <div class="section__detail__board">
+          <div class="section__detail__title">
+            <%= boardDetail.title %>
+            <p class="section__detail__title-small">
+              <span class="small author ml-3"><%= boardDetail.author %></span>
+              <span class="small time ml-2"><%= boardDetail.time %></span>
+            </p>
+          </div>
+          <div class="section__detail__contents">
+            <%- boardDetail.contents %>
+          </div>
         </div>
-        <div class="section__detail__contents">
-          <%- boardDetail.contents %>
+        <% if(!loginData) { %>
+        <div class="section__detail__box d-flex justify-content-end">
+          <a href="/board/freeboard" class="btn section__detail__button list">List</a>
         </div>
+        <% } else { %>
+        <div class="section__detail__box d-flex">
+          <div class="section__detail__box-left flex-grow-1">
+            <button class="btn section__detail__button delete" type="button">Delete</button>
+          </div>
+          <div class="section__detail__box-right">
+            <button class="btn section__detail__button modify">Modify</button>
+            <a class="btn section__detail__button cancel ml-3" href="/board/freeboard">Cancel</a>
+          </div>
+        </div>
+        <% } %>
       </div>
     </div>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <div class="footer__bottom">
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/detail'} )%>
 </body>
+
 </html>

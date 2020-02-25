@@ -1,1 +1,38 @@
 @import 'public/src/assets/scss/common/base_list/base';
+
+.detail__title{
+  @include pageBigTitle;
+}
+
+.section__detail{
+  &__title{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: $ft_large;
+    background-color: $pointColor_red;
+    &-small{
+      display: inline-block;
+      font-size: $ft_small;
+      font-weight: 300;
+    }
+  }
+  &__contents{
+    background-color: #e0e0e0;
+    color: #000;
+    font-size: $ft_medium;
+    padding: 20px;
+    line-height: 1.3;
+  }
+  &__box{
+    padding-top: 30px;
+  }
+  &__button{
+    @include makeButton(true);
+  }
+  &__button.cancel {
+    @include makeButton('gray');
+  }
+  &__button.list{
+    @include makeButton('yellow')
+  }
+}
