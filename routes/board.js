@@ -32,8 +32,11 @@ router.get('/freeboard', (req, res, next)=>{
 
 // PAGE: detail page
 router.get('/freeboard/detail/:seq', (req, res, next) => {
-  let id = req.params.seq;
+  req.session.prevUrl = req.originalUrl;
+  req.session.readSeq = req.params.seq;
+  let id = +req.params.seq;
   let body = {};
+
   let freeboardDetailConfig = {
     url: '/board/detail',
     method: 'get',
@@ -49,25 +52,50 @@ router.get('/freeboard/detail/:seq', (req, res, next) => {
   })
 })
 
+router.post('/freeboard/detail/delete', (req, res, next) => {
+  let { id } = req.body;
+  let { usernum } = req.session.user;
+  console.log(id);
+  let deleteConfig = {
+    url: '/board/delete',
+    method: 'post',
+    data: {
+      id: +id,
+      usernum
+    }
+  };
+  
+  AxiosWithDB(deleteConfig, (response) => {
+    let { data } = response;
+    console.log(data);
+    if (data.result === 1) {
+      res.json({ result: 1 });
+    } else if (data.result === 2){
+      res.json({ result: 2 });
+    };
+  });
+});
+
 // PAGE: Write
 router.route('/freeboard/write')
 .get(isLogged, (req, res, next) => {
-  req.session.prevUrl = req.originalUrl;
   res.render('pages/board/write', {title: 'Free Board' })
 })
 .post(isLogged, (req, res, next) => {
 
-  let username = req.session.user.username,
-  title = req.body.title,
-  contents = req.body.contents;
+  let usernum = req.session.user.usernum,
+  username    = req.session.user.username,
+  title       = req.body.title,
+  contents    = req.body.contents;
   
   let writeConfig = {
     method: 'post',
     url: '/board/write',
     data: {
-      username: username,
-      title: title,
-      contents: contents
+      usernum,
+      username,
+      title,
+      contents
     }
   }
   AxiosWithDB(writeConfig, (response) => {
@@ -77,6 +105,44 @@ router.route('/freeboard/write')
     } else if(data.result === 2){
       res.json({ result: 2 });
     };
+  })
+})
+
+router.route('/freeboard/detail/modify')
+.get((req, res, next) => {
+  //수정이 필요한 게시판 글 id, 이전 내용을 불러오기 위함
+  let id = req.session.readSeq;
+  let usernum = req.session.user.usernum; 
+
+  let prevContentConfig = {
+    url: '/board/modify',
+    method: 'get',
+    data: {
+      id: +id,
+      usernum
+    }
+  }
+  AxiosWithDB(prevContentConfig, (response) => {
+    let { data } = response;
+    console.log(data);
+  })
+  res.render('pages/board/modify');
+})
+.post((req, res, next) => {
+  let id = req.session.readSeq;
+  let usernum = req.session.user.usernum;
+
+  let modifyConfig = {
+    url:'/board/modify',
+    method: 'post',
+    data: {
+      id: +id,
+      usernum
+    }
+  }
+  AxiosWithDB(modifyConfig, (response) => {
+    let { data } = response;
+    console.log(data);
   })
 })
 
