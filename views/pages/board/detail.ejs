@@ -23,21 +23,27 @@
             <%- boardDetail.contents %>
           </div>
         </div>
-        <% if(!loginData) { %>
-        <div class="section__detail__box d-flex justify-content-end">
-          <a href="/board/freeboard" class="btn section__detail__button list">List</a>
-        </div>
+        <% if(loginData) { %>
+          <% if (loginData.usernum === boardDetail.usernum) { %>
+          <div class="section__detail__box d-flex">
+            <div class="section__detail__box-left flex-grow-1">
+              <button class="btn section__detail__button delete" type="button">Delete</button>
+            </div>
+            <div class="section__detail__box-right">
+              <a class="btn section__detail__button modify" href="/board/freeboard/detail/modify">Modify</a>
+              <a class="btn section__detail__button cancel ml-3" href="/board/freeboard">Cancel</a>
+            </div>
+          </div>
+          <% } else { %>
+            <div class="section__detail__box d-flex justify-content-end">
+              <a href="/board/freeboard" class="btn section__detail__button list">List</a>
+            </div>
+          <% } %>
         <% } else { %>
-        <div class="section__detail__box d-flex">
-          <div class="section__detail__box-left flex-grow-1">
-            <button class="btn section__detail__button delete" type="button">Delete</button>
+          <div class="section__detail__box d-flex justify-content-end">
+            <a href="/board/freeboard" class="btn section__detail__button list">List</a>
           </div>
-          <div class="section__detail__box-right">
-            <button class="btn section__detail__button modify">Modify</button>
-            <a class="btn section__detail__button cancel ml-3" href="/board/freeboard">Cancel</a>
-          </div>
-        </div>
-        <% } %>
+      <% } %>
       </div>
     </div>
   </div>
