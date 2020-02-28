@@ -2,8 +2,7 @@ let signinForm = common.elm('.signin__form'),
 email          = common.elm('#email'),
 password       = common.elm('#password'),
 button         = common.elm('.signin__button-login'),
-prevUrl = button.getAttribute('data-prev');
-
+prevUrl        = button.getAttribute('data-prev');
 
 signinForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -21,7 +20,7 @@ signinForm.addEventListener('submit', (e) => {
       alert('이메일이나 패스워드를 확인해주세요.')
     } else {
       // 로그인 성공 시 이전 페이지로 이동
-      if(data.prevUrl === undefined || data.prevUrl === null){
+      if(prevUrl === ''){
         window.location.href = "/";
       } else {
         window.location.href= prevUrl;

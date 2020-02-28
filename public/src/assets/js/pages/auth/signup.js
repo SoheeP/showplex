@@ -26,7 +26,6 @@ captchaRefreshBtn.addEventListener('click', () => {
 // submit
 signupForm.addEventListener('submit', function(e){
   e.preventDefault();
-  console.log('submit!');
   const signupConfig = {
     // router address
     url: '/auth/signup',

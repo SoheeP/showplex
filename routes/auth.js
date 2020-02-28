@@ -18,6 +18,7 @@ router.route('/captcha')
   let body = {};
   body.captcha = captcha;
   req.session.captcha = captcha.text;
+  console.log(req.session.captcha);
   res.json(body);
 }))
 
@@ -28,12 +29,13 @@ router.route('/signup')
   let body = {};
   body.captcha = captcha;
   req.session.captcha = captcha.text;
+  console.log(req.session.captcha);
   res.render('pages/auth/signup', body);
 }))
 .post(wrap((req, res, next) => {
-  let { email, password, username, phone, verifyNumber } = req.body;
-
-  if(req.session.captcha === verifyNumber){
+  let { email, password, username, phone, captcha } = req.body;
+  console.log(`captchaValue = ${captcha}`);
+  if (req.session.captcha === captcha) {
     const signupConfig = {
       // DB router
       url: `/auth/signup`,
@@ -42,19 +44,23 @@ router.route('/signup')
         email,
         password,
         username,
-        phone, 
-        verifyNumber
+        phone,
+        captcha
       }
     };
     AxiosWithDB(signupConfig, (response) => {
-      let { data } = response ;
-      if(data.result === 1){
+      let {
+        data
+      } = response;
+      if (data.result === 1) {
         res.json({ result: 1 });
-      }
-    })
+      } else if (data.result === 4) {
+        res.json({ result: 4 });
+      };
+    });
   } else {
     // check out the captcha number
-    res.json({ result: 8 })
+    res.json({ result: 8 });
   };
 }));
 
