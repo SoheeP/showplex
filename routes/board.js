@@ -33,7 +33,6 @@ router.get('/freeboard', (req, res, next)=>{
 // PAGE: detail page
 router.get('/freeboard/detail/:seq', (req, res, next) => {
   req.session.prevUrl = req.originalUrl;
-  req.session.readSeq = req.params.seq;
   let id = +req.params.seq;
   let body = {};
 
@@ -47,7 +46,8 @@ router.get('/freeboard/detail/:seq', (req, res, next) => {
 
   AxiosWithDB(freeboardDetailConfig, (response) => {
     body.boardDetail = response.data;
-    body.title = response.data.title
+    body.title = response.data.title;
+    body.boardDetail.id = +id;
     res.render('pages/board/detail', body);
   })
 })
@@ -108,11 +108,13 @@ router.route('/freeboard/write')
   })
 })
 
-router.route('/freeboard/detail/modify')
-.get((req, res, next) => {
+router.route('/freeboard/modify/:seq')
+.get(isLogged, (req, res, next) => {
   //수정이 필요한 게시판 글 id, 이전 내용을 불러오기 위함
-  let id = req.session.readSeq;
+  let id = req.params.seq;
   let usernum = req.session.user.usernum; 
+  let body = {};
+  console.log(`modify: GET - No. ${id}`);
 
   let prevContentConfig = {
     url: '/board/modify',
@@ -124,25 +126,38 @@ router.route('/freeboard/detail/modify')
   }
   AxiosWithDB(prevContentConfig, (response) => {
     let { data } = response;
-    console.log(data);
+    body.boardDetail = data;
+    res.render('pages/board/modify', body);
   })
-  res.render('pages/board/modify');
 })
-.post((req, res, next) => {
-  let id = req.session.readSeq;
-  let usernum = req.session.user.usernum;
+.post(isLogged, (req, res, next) => {
 
+  let id   = req.params.seq,
+  usernum  = req.session.user.usernum,
+  username = req.session.user.username,
+  title    = req.body.title,
+  contents = req.body.contents;
+
+  console.log(`modify: POST - No. ${id}`)
+  
   let modifyConfig = {
-    url:'/board/modify',
     method: 'post',
+    url: '/board/modify',
     data: {
       id: +id,
-      usernum
+      usernum,
+      username,
+      title,
+      contents
     }
   }
   AxiosWithDB(modifyConfig, (response) => {
     let { data } = response;
-    console.log(data);
+    if(data.result === 1 ){
+      res.json({ result: 1 })
+    } else {
+      res.json({ result : 2 })
+    }
   })
 })
 
