@@ -25,6 +25,15 @@
       color: #fff;
     }
   }
+  &__alert{
+    transition: .2s;
+    &.hide {
+      opacity: 0;
+    }
+    &.show{
+      opacity: 1;
+    }
+  }
 }
 
 .signup__button_box{
