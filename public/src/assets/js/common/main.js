@@ -32,5 +32,12 @@ function elm(elm){
     return null;
   }
 }
-common.fadeIn = fadeIn;
-common.elm = elm;
+
+function changeClass(elm, prevClass, currentClass){
+  elm.classList.remove(prevClass);
+  elm.classList.add(currentClass);
+}
+
+common.fadeIn      = fadeIn;
+common.elm         = elm;
+common.changeClass = changeClass;
