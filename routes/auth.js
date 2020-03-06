@@ -49,12 +49,12 @@ router.route('/signup')
       }
     };
     AxiosWithDB(signupConfig, (response) => {
-      let {
-        data
-      } = response;
+      let { data } = response;
       if (data.result === 1) {
+        //성공
         res.json({ result: 1 });
       } else if (data.result === 4) {
+        //중복
         res.json({ result: 4 });
       };
     });
