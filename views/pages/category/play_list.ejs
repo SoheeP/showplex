@@ -15,7 +15,7 @@
           </div>
           <div class="swiper-slide">
             <a href="" class="link-blcok">
-              <img src="/dist/assets/images/main/slide_02.jpg" alt="">
+              <img src="/dist/assets/images/main/play/banner_02.jpg" alt="">
             </a>
           </div>
           <div class="swiper-slide">
@@ -75,22 +75,13 @@
         </div>
         <div class="swiper-container-part recommend">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_02.jpg" alt="">
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="/movie/detail" class="link-blcok">
-                <img src="/dist/assets/images/main/slide_01.jpg" alt="">
-              </a>
-            </div>
-          </div>
+            <% recommendList.map( list => { %>
+              <div class="swiper-slide">
+                <a href="/play/detail/<%= list.mt20id._text %>" class="link-block">
+                  <img src="<%= list.poster._text%>" alt="<%= list.prfnm._text%>">
+                </a>
+              </div>
+            <% })%>
           <!-- If we need navigation buttons -->
             <div class="section__slide-part__button-prev">
               <i class="material-icons">
