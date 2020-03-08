@@ -87,7 +87,7 @@
       </div>
       <div class="swiper-container-mini">
         <div class="swiper-wrapper">
-          <% if(perforRandomList.length > 1){ %>
+          <% if(musicalRandomList !== undefined){ %>
             <% perforRandomList.map( list => { %>
               <div class="swiper-slide">
                 <a href="/play/detail/<%= list.mt20id._text%>" class="link-blcok">
@@ -96,11 +96,7 @@
               </div>
               <% }) %> 
           <% } else { %>
-            <div class="swiper-slide">
-              <a href="/play/detail/<%= perforRandomList.mt20id._text%>" class="link-blcok">
-                <img src="<%= perforRandomList.poster._text%>" alt="<%= perforRandomList.prfnm._text %>">
-              </a>
-            </div>
+            <p class="desc empty">추천 공연이 없습니다.</p>
           <% } %>
         </div>
         <!-- If we need navigation buttons -->

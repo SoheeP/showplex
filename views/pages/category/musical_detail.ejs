@@ -87,20 +87,16 @@
       </div>
       <div class="swiper-container-mini">
         <div class="swiper-wrapper">
-          <% if(musicalRandomList.length > 1){ %>
+          <% if(musicalRandomList !== undefined ){ %>
             <% musicalRandomList.map( list => { %>
               <div class="swiper-slide">
                 <a href="/musical/detail/<%= list.mt20id._text%>" class="link-blcok">
                   <img src="<%= list.poster._text%>" alt="<%= list.prfnm._text %>">
                 </a>
               </div>
-              <% }) %> 
+            <% }) %> 
           <% } else { %>
-            <div class="swiper-slide">
-              <a href="/musical/detail/<%= musicalRandomList.mt20id._text%>" class="link-blcok">
-                <img src="<%= musicalRandomList.poster._text%>" alt="<%= musicalRandomList.prfnm._text %>">
-              </a>
-            </div>
+            <p class="desc empty">추천 공연이 없습니다.</p>
           <% } %>
         </div>
         <!-- If we need navigation buttons -->
