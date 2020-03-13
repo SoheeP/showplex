@@ -84,7 +84,12 @@
   }
 
   &.disabled {
-    color: $pointColor_yellow_dark
+    color: $light_dark_gray;
+    cursor: not-allowed;
+    &:hover{
+      color:$light_dark_gray;
+      cursor: not-allowed;
+    }
   }
 
   &:hover {

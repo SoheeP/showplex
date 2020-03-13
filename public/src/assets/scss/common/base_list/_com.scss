@@ -67,3 +67,27 @@ body{
   display: block;
 }
 
+// Bootstrap
+.container-fluid{
+  position: relative;
+  padding: {
+    left: 0;
+    right: 0;
+  };
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+.row{
+  margin: {
+    left: 0;
+    right: 0;
+  };
+}
+.form-row{
+  margin: {
+    left: 0;
+    right: 0;
+  };
+}
