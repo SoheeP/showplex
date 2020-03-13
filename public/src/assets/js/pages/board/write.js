@@ -26,7 +26,7 @@ writeForm.addEventListener("submit", (e) =>{
     let { data } = response;
     if(data.result === 1 ){
       alert('등록이 완료되었습니다.');
-      window.location.href = '/board/freeboard';
+      window.location.href = '/board/freeboard/list/1';
     } else if(data.result === 2 ){
       alert('등록에 실패하였습니다.');
     }

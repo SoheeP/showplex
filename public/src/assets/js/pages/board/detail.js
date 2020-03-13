@@ -20,7 +20,7 @@ function deleteBoard(){
       if(data.result === 1){
         //삭제 성공
         alert('삭제가 완료되었습니다.');
-        window.location.href = '/board/freeboard';
+        window.location.href = '/board/freeboard/list/1';
       } else if(data.result === 2) {
         alert('삭제되지 않았습니다. 관리자에게 문의하세요.');
       };

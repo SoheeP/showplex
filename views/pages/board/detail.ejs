@@ -31,17 +31,17 @@
             </div>
             <div class="section__detail__box-right">
               <a class="btn section__detail__button modify" href="/board/freeboard/modify/<%= boardDetail.id %>">Modify</a>
-              <a class="btn section__detail__button list ml-3" href="/board/freeboard">List</a>
+              <a class="btn section__detail__button list ml-3" href="/board/freeboard/list/1">List</a>
             </div>
           </div>
           <% } else { %>
             <div class="section__detail__box d-flex justify-content-end">
-              <a href="/board/freeboard" class="btn section__detail__button list">List</a>
+              <a href="/board/freeboard/list/1" class="btn section__detail__button list">List</a>
             </div>
           <% } %>
         <% } else { %>
           <div class="section__detail__box d-flex justify-content-end">
-            <a href="/board/freeboard" class="btn section__detail__button list">List</a>
+            <a href="/board/freeboard/list/1" class="btn section__detail__button list">List</a>
           </div>
       <% } %>
       </div>
