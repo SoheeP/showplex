@@ -18,3 +18,15 @@
 .mypage__table{
   margin-top: 5px;
 }
+
+.nav__pagination {
+  &__link {
+    @include pagenation_button(18px);
+    vertical-align: sub;
+  }
+
+  &__button {
+    @include pagenation_button(18px);
+
+  }
+}

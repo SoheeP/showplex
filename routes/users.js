@@ -4,18 +4,26 @@ const { isLogged, wrap } = require('./middlewares');
 const { AxiosConfig, AxiosWithDB } = require('./common');
 
 // PAGE: My page
-router.route('/mypage')
+router.route('/mypage/:page')
 .get(isLogged, async (req, res, next) => {
+  const page = req.params.page;
+  const itemCnt = 10;
   let body = {};
   let usernum = req.session.user.usernum;
   let logConfig = {
-    url: `/users/mypage?user=${usernum}`
+    url: `/users/mypage?user=${usernum}`,
+    method: 'get',
+    data: {
+      page,
+      itemCnt
+    }
   }
   await AxiosWithDB(logConfig, (response) => {
     let { data } = response;
+    console.log(data)
     body.logData = data.log;
+    body.pageData = data.pageData;
   })
-  console.log(res.locals.loginData, 'res.locals');
   res.render('pages/mypage/dashboard', body)
 });
 

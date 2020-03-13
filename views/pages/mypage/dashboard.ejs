@@ -4,9 +4,9 @@
   <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/mypage/dashboard', title: 'My page'})%>
 </head>
 <body>
-  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
-  <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
   <div class="container-fluid">
+    <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+    <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
     <h1 class="mypage__title">My page</h1>
     <div class="row justify-content-center">
       <div class="col-4">
@@ -23,13 +23,36 @@
             <tbody>
               <% logData.map((list, idx) => { %>
               <tr>
-                <th scope="row" class="text-center"><%= idx+1 %></th>
+                <th scope="row" class="text-center">
+                  <%= ((pageData.page-1) * pageData.rowSize + (idx + 1)) %>
+                </th>
                 <td class="text-center"><%= list.ip %></td>
                 <td class="text-center"><%= list.loginTime %></td class="text-center">
               </tr>
               <% }) %>
             </tbody>
           </table>
+          <nav aria-label="Page navigation nav__pagination">
+            <ul class="pagination justify-content-center">
+              <li class="page-item <%= pageData.startPage === 1 && 'disabled' %>">
+                <a class="nav__pagination__button strong <%= pageData.startPage === 1 && 'hidden' %>" href="/users/mypage/<%= pageData.startPage - 1 %>" aria-label="Previous">
+                  <span aria-hidden="true">
+                    <i class="material-icons">navigate_before</i>
+                  </span>
+                </a>
+              </li>
+              <% for(let i = +pageData.startPage ; i <= +pageData.endPage ; i++ ) { %>
+                <li class="page-item"><a class="nav__pagination__link strong <%= i === +pageData.page && 'active' %>" href="/users/mypage/<%= i %>"><%= i %></a></li>
+              <% } %>
+              <li class="page-item <%= pageData.endPage === pageData.totalPage && 'disabled' %>">
+                <a class="nav__pagination__button <%= pageData.endPage === pageData.totalPage && 'hidden' %>" href="/users/mypage/<%= pageData.endPage + 1 %>" aria-label="Next">
+                  <span aria-hidden="true">
+                    <i class="material-icons">navigate_next</i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div class="mypage__board">
           <h3 class="mypage__subtitle strong">Recented Free Board:</h3>
@@ -62,9 +85,9 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer__bottom">
-    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+    <div class="<%= logData.length === 0 && 'footer__bottom' %>">
+      <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+    </div>
   </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/mypage/dashboard'}) %>
 </body>
