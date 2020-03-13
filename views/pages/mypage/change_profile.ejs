@@ -6,9 +6,9 @@
 </head>
 
 <body>
-  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
-  <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
   <div class="container-fluid">
+    <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
+    <%- include(`${process.cwd()}/views/common/components/partial/aside.ejs`) %>
     <h1 class="profile__title">Change Info</h1>
     <form class="profile__form">
       <div class="form-row justify-content-center">
@@ -40,8 +40,8 @@
         <a href="/" class="btn profile__button-cancel ">Cancel</a>
       </div>
     </form>
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/mypage/change_profile'}) %>
 </body>
 
