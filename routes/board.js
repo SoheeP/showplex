@@ -7,16 +7,25 @@ const {
 const { moment } = require('./npm_modules');
 const { isLogged, wrap } = require('./middlewares');
 
-router.get('/freeboard', (req, res, next)=>{
+router.get('/freeboard/list/:page', (req, res, next)=>{
   req.session.prevUrl = req.originalUrl;
+  const page = req.params.page;
+  const itemCnt = 10;
+  let body = {};
+  
   let boardListConfig = {
     url: `/board/freeboard`,
-    method: 'get'
+    method: 'get',
+    data: {
+      page,
+      itemCnt
+    }
   }
   AxiosWithDB(boardListConfig, (response)=> {
-    let body = {
-      list: response.data
-    };
+    let { list, pageData } = response.data;
+    body.list = list;
+    body.pageData = pageData;
+
     for(let key in body){
       if(key === 'list'){
         body[key].map(list => {
@@ -26,6 +35,7 @@ router.get('/freeboard', (req, res, next)=>{
       };
     };
     body.title = 'Free board';
+    console.log(body);
     res.render('pages/board/freeboard', body)
   });
 });
@@ -79,6 +89,7 @@ router.post('/freeboard/detail/delete', (req, res, next) => {
 // PAGE: Write
 router.route('/freeboard/write')
 .get(isLogged, (req, res, next) => {
+
   res.render('pages/board/write', {title: 'Free Board' })
 })
 .post(isLogged, (req, res, next) => {

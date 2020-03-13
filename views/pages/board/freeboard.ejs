@@ -31,18 +31,18 @@
       </div>
       <nav aria-label="Page navigation nav__pagination">
         <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="nav__pagination__button strong" href="#" aria-label="Previous">
+          <li class="page-item <%= pageData.startPage === 1 && 'disabled' %>">
+            <a class="nav__pagination__button strong <%= pageData.startPage === 1 && 'hidden' %>" href="/board/freeboard/list/<%= pageData.startPage - 1 %>" aria-label="Previous">
               <span aria-hidden="true">
                 <i class="material-icons">navigate_before</i>
               </span>
             </a>
           </li>
-          <li class="page-item"><a class="nav__pagination__link strong active" href="#">1</a></li>
-          <li class="page-item"><a class="nav__pagination__link strong" href="#">2</a></li>
-          <li class="page-item"><a class="nav__pagination__link strong" href="#">3</a></li>
-          <li class="page-item">
-            <a class="nav__pagination__button" href="#" aria-label="Next">
+          <% for(let i = +pageData.startPage ; i <= +pageData.endPage ; i++ ) {  %>
+            <li class="page-item"><a class="nav__pagination__link strong <%= i === +pageData.page && 'active' %>" href="/board/freeboard/list/<%= i %>"><%= i %></a></li>
+          <% }%>
+          <li class="page-item <%= pageData.endPage === pageData.totalPage && 'disabled' %>">
+            <a class="nav__pagination__button <%= pageData.endPage === pageData.totalPage && 'hidden' %>" href="/board/freeboard/list/<%= pageData.endPage + 1 %>" aria-label="Next">
               <span aria-hidden="true">
                 <i class="material-icons">navigate_next</i>
               </span>
@@ -52,7 +52,9 @@
       </nav>
     </div>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  <div class="<%= +list.length < +pageData.rowSize && 'footer__bottom' %>" data-abc="<%= list.length %>" data-def="<%= +list.length < +pageData.rowSize %>">
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+  </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/freeboard' })%>
 </body>
 </html>
