@@ -107,6 +107,35 @@ router.route('/signout')
   } else {
     console.log('No any stored session');
   }
-}))
+}));
+
+router.route('/withdrawal')
+.post(wrap((req, res, next) => {
+  let { usernum } = req.session.user;
+  let withdrawalConfig = {
+    url: '/auth/withdrawal',
+    method: 'post',
+    data: {
+      usernum
+    }
+  };
+  AxiosWithDB(withdrawalConfig, (response) => {
+    let { data } = response;
+    if (data.result === 1) {
+      if (req.session) {
+        req.session.destroy((err) => {
+          if (err) {
+            console.log(`Error: session delete`);
+            return;
+          }
+          console.log('Success: session delete');
+          res.json({ result: 1 })
+        })
+      } else {
+        res.json({ result: 2 })
+      }
+    }
+  })
+}));
 
 module.exports = router;
