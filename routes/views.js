@@ -12,4 +12,8 @@ router.get('/about', (req, res, next) => {
   res.render('pages/view_pages/about')
 })
 
+router.get('/contact', (req, res, next) => {
+  res.render('pages/view_pages/contact')
+})
+
 module.exports = router;
