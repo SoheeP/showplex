@@ -1,0 +1,18 @@
+@import 'public/src/assets/scss/common/base_list/base';
+
+.contact__title{
+  @include pageBigTitle;
+}
+
+.contact{
+  &__text_box{
+    padding: 10% 0;
+    text-align: center;
+    font-size: $ft-large;
+    line-height: 1.8;
+  }
+}
+
+.contact__button-copy{
+  @include makeButton('yellow')
+}
