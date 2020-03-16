@@ -91,7 +91,6 @@ router.get('/movie/detail/:id', async function(req, res, next){
     body.randomSort = randomSort.data.data.movies;
     body.title = 'movie_detail';
   }))
-  console.log(body);
   res.render('pages/category/movie_detail', body);
 })
 
@@ -122,7 +121,6 @@ router.get('/play/list', async function(req, res, next){
 
     body.title = 'play_list';
   }));
-  console.log(body.recommendList)
   res.render('pages/category/play_list', body)
 })
 
@@ -230,7 +228,6 @@ router.get('/musical/detail/:seq', async function(req, res, next){
   .catch(function(err){
     console.log('err:', err);
   });
-  console.log(body.musicalRandomList)
   res.render('pages/category/musical_detail', body);
 });
 

@@ -6,8 +6,8 @@
 </head>
 
 <body>
-  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fluid">
+    <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
     <h1 class="signin__title">Sign in</h1>
     <form class="signin__form">
       <div class="form-row justify-content-center">
@@ -36,7 +36,7 @@
       </div>
     </form>
   </div>
-  <div class="footer__bottom">
+  <div class="footer__parent">
     <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/auth/signin'})%>

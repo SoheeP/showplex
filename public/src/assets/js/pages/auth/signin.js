@@ -4,6 +4,18 @@ password       = common.elm('#password'),
 button         = common.elm('.signin__button-login'),
 prevUrl        = button.getAttribute('data-prev');
 
+
+//body 사이즈 계산
+(() => {
+  let footerOffsetHeight = document.querySelector('.footer').offsetHeight;
+  let footerRealHeight = +footerOffsetHeight + 120;
+  let containerHeight = document.querySelectorAll('.container-fluid')[0].offsetHeight;
+  let gap = window.innerHeight - containerHeight;
+  if (+gap > footerRealHeight) {
+    document.querySelector('.footer__parent').classList.add('footer__bottom')
+  }
+})();
+
 signinForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const signinConfig = {
