@@ -1,1 +1,29 @@
 @import 'public/src/assets/scss/common/base_list/base';
+
+.about__title{
+  @include pageBigTitle
+}
+
+.about{
+  &__text_box{
+    padding: 20px 0;
+    margin-bottom: 30px;
+  }
+  &__desc{
+    font-size: $ft_medium;
+    line-height: 1.3;
+  }
+}
+
+.card{
+  background-color: $light_gray;
+  color: $dark_gray;
+  &-title{
+    font-size: $ft_large;
+    line-height: 1.8;
+  }
+  &-text{
+    font-size: $ft_small;
+    line-height: 1.3;
+  }
+}

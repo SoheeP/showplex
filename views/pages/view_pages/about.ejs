@@ -6,9 +6,39 @@
 <body>
   <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fluid">
-    <h1 class="board__title">About Us</h1>
+    <h1 class="about__title">About Us</h1>
+    <div class="wrap">
+      <div class="about__text_box">
+        <p class="about__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae tempora maxime eius sequi distinctio, tenetur ea placeat accusantium laudantium minus cumque aliquid repudiandae, sit modi ab qui. At, itaque amet! Eaque facere voluptates ipsum quisquam autem, provident soluta nam nesciunt expedita obcaecati nostrum optio iste modi porro vel harum officiis? Accusamus, quas.
+        </p>
+      </div>
+      <div class="card-deck">
+        <div class="card">
+          <img src="/dist/assets/images/cards/card1.jpg" class="card-img-top" alt="movie - avengers">
+          <div class="card-body">
+            <h5 class="card-title strong">Movie Info</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis deserunt eius mollitia, eum inventore ut esse placeat modi vero at adipisci quae nulla consequatur commodi totam nobis expedita illum iste!</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/dist/assets/images/cards/card2.jpg" class="card-img-top" alt="play - amadeus">
+          <div class="card-body">
+            <h5 class="card-title strong">Play Info</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos ea eligendi libero aspernatur vitae quos ad eum repellat laborum deleniti, maiores doloribus. Mollitia placeat expedita ab consequatur ad quisquam non?</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/dist/assets/images/cards/card3.jpg" class="card-img-top" alt="musical - the phantom of the opera">
+          <div class="card-body">
+            <h5 class="card-title strong">Musical Info</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cum nihil possimus sequi!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
+    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/view_pages/about' })%>
 </body>
 </html>
