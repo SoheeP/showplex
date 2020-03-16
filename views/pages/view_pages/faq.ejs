@@ -58,7 +58,7 @@
             <div class="section__faq__header" id="headingFour">
               <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  Collapsible Group Item #3
+                  Collapsible Group Item #4
                 </button>
               </h2>
             </div>
@@ -72,13 +72,9 @@
       </div>
     </div>
   </div>
-  <% if (document.querySelectorAll('.card').length < 3) { %>
-  <div class="footer__bottom">
+  <div class="footer__parent">
     <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   </div>
-  <% } else { %>
-    <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
-  <% } %>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/view_pages/faq' })%>
 </body>
 </html>
