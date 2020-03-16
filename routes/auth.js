@@ -1,5 +1,4 @@
 const express = require('express');
-const crypto = require('crypto');
 const router = express.Router();
 const {
   Axios,
@@ -7,8 +6,8 @@ const {
   createSvgCaptcha
 } = require('./common');
 const { wrap } = require('./middlewares');
-const { uuid4 } = require('./npm_modules');
-
+const crypto = require('crypto');
+const saltKey = crypto.createHash('sha512').digest('base64');
 
 // NOTE: Create Captcha
 
@@ -29,12 +28,15 @@ router.route('/signup')
   let body = {};
   body.captcha = captcha;
   req.session.captcha = captcha.text;
-  console.log(req.session.captcha);
   res.render('pages/auth/signup', body);
 }))
 .post(wrap((req, res, next) => {
   let { email, password, username, phone, captcha } = req.body;
   console.log(`captchaValue = ${captcha}`);
+  
+  let hashPassword = crypto.pbkdf2Sync(password, saltKey, 1514578, 64, 'sha512').toString('base64');
+  
+  console.log(hashPassword, 'hash')
   if (req.session.captcha === captcha) {
     const signupConfig = {
       // DB router
@@ -42,7 +44,7 @@ router.route('/signup')
       method: 'post',
       data: {
         email,
-        password,
+        hashPassword,
         username,
         phone,
         captcha
@@ -73,12 +75,14 @@ router.route('/signin')
 
   let { email, password } = req.body;
   
+  let hashPassword = crypto.pbkdf2Sync(password, saltKey, 1514578, 64, 'sha512').toString('base64');
+
   let signinConfig = {
     method: 'post',
     url: '/auth/signin',
     data: {
       email,
-      password
+      hashPassword
     }
   };
   AxiosWithDB(signinConfig, (response) => {

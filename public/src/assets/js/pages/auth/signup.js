@@ -8,11 +8,16 @@ let signupForm     = common.elm('.signup__form'),
  captchaData       = common.elm('.captcha__data'),
  captchaRefreshBtn = common.elm('.signup__button-refresh'),
  captchaValue      = common.elm('#captcha'),
- passwordRuleReg   = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
+ passwordRuleReg   = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,16}$/;
+
+//Bootstrap tooltip
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 function checkpasswordReg (value){
   if(!passwordRuleReg.test(value)){
-    alertMessage.innerHTML = "영문, 숫자 조합으로 8자~16자 이상으로 설정할 수 있습니다.";
+    alertMessage.innerHTML = "영문, 숫자 조합으로 4자~16자 이상으로 설정할 수 있습니다.";
     return false;
   } else {
     return true;
