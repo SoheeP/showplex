@@ -5,6 +5,7 @@ $(document).ready(function() {
   });
 });
 
+common.footerBottom();
 let writeForm = common.elm('#writeForm');
 let contents = common.elm('#summernote');
 let title = common.elm('.section__write__title');

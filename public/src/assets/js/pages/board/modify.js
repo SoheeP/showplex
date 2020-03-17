@@ -5,10 +5,13 @@ $(document).ready(function() {
   });
 });
 
+common.footerBottom();
+
 let contents = common.elm('#summernote');
 let title = common.elm('.section__modify__title');
 
 writeForm.addEventListener("submit", (e) =>{
+  console.log($('.summernote').summernote('code'))
   e.preventDefault();
   if(title.value === '' || contents.value === ''){
     alert('입력되지 않았습니다.')

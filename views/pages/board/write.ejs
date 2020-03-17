@@ -4,8 +4,8 @@
   <%- include(`${process.cwd()}/views/common/base/head.ejs`, {path: 'pages/board/write', title: 'Write'})%>
 </head>
 <body>
-  <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
   <div class="container-fluid">
+    <%- include(`${process.cwd()}/views/common/components/partial/header.ejs`) %>
     <h1 class="write__title">Free Board</h1>
     <div class="section__write">
       <div class="wrap">
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div class="footer__bottom">
+  <div class="footer__parent">
     <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/write' })%>
