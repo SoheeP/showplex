@@ -17,7 +17,7 @@ $(function () {
 
 function checkpasswordReg (value){
   if(!passwordRuleReg.test(value)){
-    alertMessage.innerHTML = "영문, 숫자 조합으로 4자~16자 이상으로 설정할 수 있습니다.";
+    alertMessage[0].innerHTML = "영문, 숫자 조합으로 4자~16자 이상으로 설정할 수 있습니다.";
     return false;
   } else {
     return true;
@@ -31,15 +31,28 @@ password.addEventListener('blur', (e)=>{
 checkPassword.addEventListener('blur', (e)=>{
   if (currentPassword === e.currentTarget.value) {
     if (checkpasswordReg(currentPassword) && checkpasswordReg(e.currentTarget.value)) {
-      common.changeClass(alertMessage, 'alert-danger', 'alert-primary')
-      alertMessage.innerHTML = "사용할 수 있는 비밀번호입니다.";
+      common.changeClass(alertMessage[0], 'alert-danger', 'alert-primary')
+      alertMessage[0].innerHTML = "사용할 수 있는 비밀번호입니다.";
     }
   } else if (currentPassword !== e.currentTarget.value){
-    common.changeClass(alertMessage, 'alert-primary', 'alert-danger')
-    alertMessage.innerHTML = "비밀번호가 일치하지 않습니다.";
+    common.changeClass(alertMessage[0], 'alert-primary', 'alert-danger')
+    alertMessage[0].innerHTML = "비밀번호가 일치하지 않습니다.";
   } else if (currentPassword === '' || e.currentTarget.value === ''){
-    common.changeClass(alertMessage, 'alert-primary', 'alert-danger')
-    alertMessage.innerHTML = "비밀번호 입력을 확인해주세요."
+    common.changeClass(alertMessage[0], 'alert-primary', 'alert-danger')
+    alertMessage[0].innerHTML = "비밀번호 입력을 확인해주세요."
+  }
+});
+
+username.addEventListener("blur", (e)=>{
+  let nameReg = /^[가-힣a-zA-Z]+$/;
+  console.log(`${e.target.value}, \n result: ${nameReg.test(e.target.value)}`)
+  if(!nameReg.test(e.target.value)){
+    //포함되지 않았을 때
+    common.changeClass(alertMessage[1], 'alert-primary', 'alert-danger');
+    alertMessage[1].innerHTML = '이름에는 한글, 영어 대소문자만 가능합니다.'
+  } else {
+    common.changeClass(alertMessage[1], 'alert-danger', 'alert-primary');
+    alertMessage[1].innerHTML = '사용할 수 있는 이름입니다.'
   }
 })
 
