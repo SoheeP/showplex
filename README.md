@@ -1,13 +1,13 @@
 # Showplex
 
-[TOC]
+
 
 
 
 ### Introduction
 
 영화, 연극, 뮤지컬에 대한 정보를 확인할 수 있으며 회원가입 및 자유게시판을 사용할 수 있습니다.
-**포트폴리오용 페이지입니다. ** [페이지로 이동](http://34.64.177.248:8080/)
+**포트폴리오용 페이지입니다.** [페이지로 이동](http://34.64.177.248:8080/)
 
 ![FireShot Capture 002 - Home - localhost](https://user-images.githubusercontent.com/43696483/75973015-d7585b80-5f17-11ea-99b4-9162aa264a48.png)
 
@@ -109,30 +109,6 @@
 * Log 데이터는 페이지당 10개의 데이터가 나타나며 페이지네이션 목록으로 확인가능합니다.
 
 * 회원정보 변경 시, 모든 사항 뿐만 아니라 일부 정보만 입력해도 수정될 수 있도록 백엔드 서버에서 처리하였습니다.
-
-  ```js
-  router.post('/profile/change', (req, res, next) => {
-    console.log(req.body, 'req.body');
-    // const { usernum, password, username, phone } = req.body;
-    const { usernum, ...reqBody } = req.body;
-    let body = {};
-    let queryString = '';
-    for(let key in reqBody){
-      queryString += `${key}='${reqBody[key]}', `
-    }
-    query(`UPDATE showplex.user SET ${queryString.slice(0, queryString.length-2)} where usernum='${usernum}'`, (result) => {
-      console.log(result, 'After update result');
-      body.result = 1;
-      db.query(`select * from showplex.user where usernum="${usernum}"`, async (error, results) => {
-        if (error) throw error;
-        if (results.length > 0) {
-          body.userData = _.omit(results[0], ['password', 'verifyNumber']);
-          res.json(body);
-        };
-      });
-    });
-  })
-  ```
 
 
 
