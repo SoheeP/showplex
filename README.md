@@ -7,7 +7,7 @@
 ### Introduction
 
 영화, 연극, 뮤지컬에 대한 정보를 확인할 수 있으며 회원가입 및 자유게시판을 사용할 수 있습니다.
-**포트폴리오용 페이지입니다.**
+**포트폴리오용 페이지입니다. ** [페이지로 이동](http://34.64.177.248:8080/)
 
 ![FireShot Capture 002 - Home - localhost](https://user-images.githubusercontent.com/43696483/75973015-d7585b80-5f17-11ea-99b4-9162aa264a48.png)
 
@@ -39,6 +39,8 @@
 * 로그인 기록
 * 게시판, 로그인 기록 페이지네이션
 
+
+
 ### Getting Start
 
 이 페이지를 로컬에서 구동하여 확인하시려면 아래 내용을 따라 진행해주시면 됩니다.
@@ -47,35 +49,37 @@
 
 1. Node.js 가 설치되어 있어야 합니다.
 2. Git bash가 설치되어 있어야 합니다.
+3. 
 
 ##### 설치방법
 
-1.  Front 부분 설치
-   1. Git bash에서 아래 repo를 클론합니다.
+1. Git bash에서 아래 repo를 클론합니다.
 
-      ```js
-      $ git clone https://github.com/SoheeP/showplex.git
-      ```
+   ```bash
+   $ git clone https://github.com/SoheeP/showplex.git
+   ```
 
-   2. Npm 을 이용하여 필요한 모듈을 설치합니다.
+2. Npm 을 이용하여 필요한 모듈을 설치합니다.
 
-      ```js
-      $ npm i
-      ```
+   ```bash
+   $ npm i
+   ```
 
-   3. Gulp를 실행하여 scss, js 파일들을 컴파일합니다.
+3. Gulp를 실행하여 scss, js 파일들을 컴파일합니다.
 
-      ```js
-      $ gulp
-      ```
+   ```bash
+   $ gulp
+   ```
 
-   4. 2번과 3번이 완료되었다면, `npm start`로 로컬서버를 실행합니다.
+4. 2번과 3번이 완료되었다면, `npm start`로 로컬서버를 실행합니다.
 
-      ```js
-      $ npm start
-      ```
+   ```bash
+   $ npm start
+   ```
 
-   5. 브라우저에서 `localhost:5050`을 입력하여 접속합니다.
+5. 브라우저에서 `localhost:5050`을 입력하여 접속합니다.
+
+* Back-end(DB) 설치는 [여기로 이동해주세요.](https://github.com/SoheeP/showplex_db)
 
 
 
@@ -85,66 +89,17 @@
 
 ![signup](https://user-images.githubusercontent.com/43696483/76065314-bef74800-5fce-11ea-9c87-feb33993df14.gif)
 
-* 필수 입력 영역은 Html `required` 속성 사용
+* 필수 입력 영역은 Html `required` 속성 사용했습니다.
+* 비밀번호 정규식 사용(숫자, 영문 조합 4~16자)
 
-* 비밀번호 정규식 사용(숫자, 영문 조합 8~16자)
-
-* Captcha로 자동입력방지 
-
-* 아이디 중복확인은 db에서 확인
-
-  ```js
-  // db - auth.js파일
-  router.route('/signup')
-  .post(async (req, res, next) => {
-  
-    const email  = req.body.email,
-    password     = req.body.password,
-    username     = req.body.username,
-    phone        = req.body.phone,
-    verifyNumber = req.body.captcha;
-     
-    let verify, result;
-    /** 
-     * NOTE: result 값 
-     * 1: 가입 완료
-     * 2: 무엇인가의 에러로 인한 실패
-     * 3: 인증 실패
-     * 4: 중복 체크
-     * */ 
-    if(verifyNumber.length === 0){
-      //인증번호(captcha) 없음
-      result = { result: 3 };
-      res.json(result)
-    } else {
-      verify = 1;
-      db.query(`select * from showplex.user where email="${email}"`, (err, results) => {
-        if(err) throw err;
-        if(results.length > 0 ){
-          //이미 있는 아이디일 때
-          res.json({ result: 4 });
-        } else {
-          // 데이터 삽입
-          db.query(`insert into showplex.user (email, password, username, phone, verifyNumber, verify) values ("${email}", "${password}", "${username}", "${phone}", "${verifyNumber}", "${verify}")`, (error, results) => {
-            if(error){
-              result = { result: 2 };
-              res.json(result);
-              console.log(`Error: 2 : ${error}, ${results}`);
-            } else {
-              result = { result: 1 };
-              res.json(result);
-              console.log(`Success ! ${results}`);
-            };
-          });
-        };
-      });
-    };
-  });
-  ```
-
-  
+  * 비밀번호 암호는 hash 생성으로 단방향암호화를 적용했습니다.
+  * 라이브페이지에서 테스트 하실 때엔 테스트용으로 작성하시기 바랍니다.
+* Captcha로 자동입력방지
+* 아이디 중복확인은 db에서 확인합니다.
 
 * 가입 완료 후 로그인 페이지로 이동합니다.
+
+
 
 ##### Sign In - My Page, Change Profile
 
