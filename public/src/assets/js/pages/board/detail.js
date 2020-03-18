@@ -1,3 +1,5 @@
+common.footerBottom();
+
 let deleteBtn = common.elm('.section__detail__button.delete');
 
 function deleteBoard(){
@@ -30,4 +32,4 @@ function deleteBoard(){
 
 if(deleteBtn !== null || deleteBtn !== undefined){
   deleteBoard();
-} 
+}

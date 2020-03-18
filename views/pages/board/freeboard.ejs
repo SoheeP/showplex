@@ -52,7 +52,7 @@
       </nav>
     </div>
   </div>
-  <div class="<%= +list.length < 3 && 'footer__bottom' %>" data-abc="<%= list.length %>" data-def="<%= +list.length < +pageData.rowSize %>">
+  <div class="footer__parent">
     <%- include(`${process.cwd()}/views/common/components/partial/footer.ejs`) %>
   </div>
   <%- include(`${process.cwd()}/views/common/base/foot.ejs`, {path: 'pages/board/freeboard' })%>

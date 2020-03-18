@@ -38,6 +38,17 @@ function changeClass(elm, prevClass, currentClass){
   elm.classList.add(currentClass);
 }
 
-common.fadeIn      = fadeIn;
-common.elm         = elm;
-common.changeClass = changeClass;
+function footerBottom (){
+  let footerOffsetHeight = document.querySelector('.footer').offsetHeight;
+  let footerRealHeight = +footerOffsetHeight + 120;
+  let containerHeight = document.querySelectorAll('.container-fluid')[0].offsetHeight;
+  let gap = window.innerHeight - containerHeight;
+  if (+gap > footerRealHeight) {
+    document.querySelector('.footer__parent').classList.add('footer__bottom')
+  }
+}
+
+common.fadeIn       = fadeIn;
+common.elm          = elm;
+common.changeClass  = changeClass;
+common.footerBottom = footerBottom;

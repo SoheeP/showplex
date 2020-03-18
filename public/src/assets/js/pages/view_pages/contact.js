@@ -1,5 +1,7 @@
 let copyBtn = common.elm('.contact__button-copy');
 
+common.footerBottom();
+
 copyBtn.addEventListener("click", (e)=>{
   e.preventDefault();
   let temp = document.createElement('textarea');
