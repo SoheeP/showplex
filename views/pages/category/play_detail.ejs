@@ -10,10 +10,10 @@
 
   <div class="section__detail">
     <div class="row wrap">
-      <div class="col-6 padding-none margin-none">
+      <div class="col-6">
         <img src="<%= perforDetail.poster._text %>" alt="<%= perforDetail.prfnm %>" class="section__detail__poster">
       </div>
-      <div class="col-6 padding-none margin-none">
+      <div class="col-6">
         <h2 class="section__detail__title strong">
           <%= perforDetail.prfnm._text %>
         </h2>
@@ -87,7 +87,7 @@
       </div>
       <div class="swiper-container-mini">
         <div class="swiper-wrapper">
-          <% if(musicalRandomList !== undefined){ %>
+          <% if(perforRandomList !== undefined){ %>
             <% perforRandomList.map( list => { %>
               <div class="swiper-slide">
                 <a href="/play/detail/<%= list.mt20id._text%>" class="link-blcok">
