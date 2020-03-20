@@ -1,8 +1,20 @@
 
 .header__nav{
   background-color: $pointColor_red;
-  height: 70px;
+  padding: 15px 25px;
   color: #fff;
   z-index: 100;
   @include clearFloat;
+}
+
+.navbar-toggler-icon{
+  .material-icons{
+    color: #fff;
+  }
+}
+
+// Bootstrap
+
+.collapse.show{
+  background-color: $pointColor_red;
 }

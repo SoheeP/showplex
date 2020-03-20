@@ -4,7 +4,35 @@ body{
   font-family: 'Red Hat Display', sans-serif, 'Nanum Gothic', sans-serif;
 }
 
+
+// Bootstrap
+.container-fluid{
+  position: relative;
+  padding: {
+    left: 0;
+    right: 0;
+  };
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+.row, .form-row, .card-deck{
+  margin: {
+    left: 0;
+    right: 0;
+  };
+}
+
+// custom
+
 .wrap{
+  @include respond-to('extraXS'){
+    width: 280px;
+  };
+  @include respond-to('extraS'){
+    width: 320px;
+  };
   @include respond-to('small'){
     width: 420px;
   };
@@ -20,7 +48,6 @@ body{
   @include respond-to('extraXL'){
     width: 1440px;
   };
-  width: 1440px;
   margin: auto;
 }
 
@@ -65,23 +92,4 @@ body{
 
 .link-block{
   display: block;
-}
-
-// Bootstrap
-.container-fluid{
-  position: relative;
-  padding: {
-    left: 0;
-    right: 0;
-  };
-  margin: {
-    left: 0;
-    right: 0;
-  }
-}
-.row, .form-row, .card-deck{
-  margin: {
-    left: 0;
-    right: 0;
-  };
 }

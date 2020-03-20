@@ -51,7 +51,10 @@
 
   .section__title {
     display: inline-block;
-    font-size: $ft_title;
+    @include respond-to('medium'){
+      font-size: $ft_title;
+    }
+    font-size: $ft_large;
     background-color: $dark_gray;
     padding-right: 30px;
   }
