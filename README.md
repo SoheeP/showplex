@@ -7,7 +7,7 @@
 ### Introduction
 
 영화, 연극, 뮤지컬에 대한 정보를 확인할 수 있으며 회원가입 및 자유게시판을 사용할 수 있습니다.
-**포트폴리오용 페이지입니다.**
+**포트폴리오용 페이지입니다.** [페이지로 이동](http://34.64.177.248:8080/)
 
 ![FireShot Capture 002 - Home - localhost](https://user-images.githubusercontent.com/43696483/75973015-d7585b80-5f17-11ea-99b4-9162aa264a48.png)
 
